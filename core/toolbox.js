@@ -511,9 +511,20 @@ Blockly.Toolbox.TreeControl.prototype.enterDocument = function() {
   // Add touch handler.
   if (goog.events.BrowserFeature.TOUCH_ENABLED) {
     var el = this.getElement();
+    Blockly.bindEventWithChecks_(el, goog.events.EventType.TOUCHSTART, this,
+        this.handleTouchStart_, /*opt_noCaptureIdentifier*/ false, /*opt_noPreventDefault*/ true);
     Blockly.bindEventWithChecks_(el, goog.events.EventType.TOUCHEND, this,
-        this.handleTouchEvent_);
+        this.handleTouchEnd_);
   }
+};
+
+/**
+ * Suppress the inherited touch start behaviour, as applicable.
+ * @param {!goog.events.BrowserEvent} e The browser event.
+ * @private
+ */
+Blockly.Toolbox.TreeControl.prototype.handleTouchStart_ = function(e) {
+  // NOP.
 };
 
 /**
@@ -521,7 +532,7 @@ Blockly.Toolbox.TreeControl.prototype.enterDocument = function() {
  * @param {!goog.events.BrowserEvent} e The browser event.
  * @private
  */
-Blockly.Toolbox.TreeControl.prototype.handleTouchEvent_ = function(e) {
+Blockly.Toolbox.TreeControl.prototype.handleTouchEnd_ = function(e) {
   var node = this.getNodeFromEvent_(e);
   if (node && e.type === goog.events.EventType.TOUCHEND) {
     // Fire asynchronously since onMouseDown takes long enough that the browser
