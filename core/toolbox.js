@@ -512,7 +512,7 @@ Blockly.Toolbox.TreeControl.prototype.enterDocument = function() {
   if (goog.events.BrowserFeature.TOUCH_ENABLED) {
     var el = this.getElement();
     Blockly.bindEventWithChecks_(el, goog.events.EventType.TOUCHSTART, this,
-        this.handleTouchStart_);
+        this.handleTouchStart_, /*opt_noCaptureIdentifier*/ false, /*opt_noPreventDefault*/ true);
     Blockly.bindEventWithChecks_(el, goog.events.EventType.TOUCHEND, this,
         this.handleTouchEnd_);
   }
