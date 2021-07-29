@@ -56,7 +56,6 @@ const setMainWorkspace = function(workspace) {
 };
 exports.setMainWorkspace = setMainWorkspace;
 
-
 /**
  * Size the workspace when the contents change.  This also updates
  * scrollbars accordingly.
