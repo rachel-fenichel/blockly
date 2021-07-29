@@ -51,6 +51,7 @@
     "test": "tests/run_all_tests.sh",
     "test:generators": "tests/scripts/run_generators.sh",
     "test:compile:advanced": "gulp buildAdvancedCompilationTest",
+    "test:mocha": "http-server ./ -o /tests/mocha/index.html",
     "typings": "gulp typings",
     "updateGithubPages": "gulp gitUpdateGithubPages"
   },

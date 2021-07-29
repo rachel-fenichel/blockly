@@ -17,10 +17,9 @@
 goog.provide('Blockly');
 
 goog.require('Blockly.browserEvents');
-goog.require('Blockly.ComponentManager');
+goog.require('Blockly.common');
 goog.require('Blockly.connectionTypes');
 goog.require('Blockly.constants');
-goog.require('Blockly.DropDownDiv');
 goog.require('Blockly.Events');
 /** @suppress {extraRequire} */
 goog.require('Blockly.Events.BlockCreate');
@@ -38,8 +37,6 @@ goog.require('Blockly.inputTypes');
 goog.require('Blockly.internalConstants');
 /** @suppress {extraRequire} */
 goog.require('Blockly.Procedures');
-goog.require('Blockly.ShortcutRegistry');
-goog.require('Blockly.Tooltip');
 /** @suppress {extraRequire} */
 goog.require('Blockly.Touch');
 goog.require('Blockly.utils');
@@ -49,7 +46,6 @@ goog.require('Blockly.utils.Size');
 goog.require('Blockly.utils.toolbox');
 /** @suppress {extraRequire} */
 goog.require('Blockly.Variables');
-goog.require('Blockly.WidgetDiv');
 goog.require('Blockly.WorkspaceSvg');
 /** @suppress {extraRequire} */
 goog.require('Blockly.Xml');
@@ -71,12 +67,11 @@ goog.requireType('Blockly.Workspace');
  */
 Blockly.VERSION = 'uncompiled';
 
-/**
- * The main workspace most recently used.
- * Set by Blockly.WorkspaceSvg.prototype.markFocused
- * @type {Blockly.Workspace}
- */
-Blockly.mainWorkspace = null;
+// Add a getter and setter pair for Blockly.mainWorkspace, for legacy reasons.
+Object.defineProperty(Blockly, 'mainWorkspace', {
+  set: function(x) {Blockly.common.setMainWorkspace(x);},
+  get: function() {return Blockly.common.getMainWorkspace();}
+});
 
 /**
  * Currently selected block.
@@ -149,9 +144,7 @@ Blockly.svgSize = function(svg) {
  * scrollbars accordingly.
  * @param {!Blockly.WorkspaceSvg} workspace The workspace to resize.
  */
-Blockly.resizeSvgContents = function(workspace) {
-  workspace.resizeContents();
-};
+Blockly.resizeSvgContents = Blockly.common.resizeSvgContents;
 
 /**
  * Size the SVG image to completely fill its container. Call this when the view
@@ -161,30 +154,7 @@ Blockly.resizeSvgContents = function(workspace) {
  * Record the height/width of the SVG image.
  * @param {!Blockly.WorkspaceSvg} workspace Any workspace in the SVG.
  */
-Blockly.svgResize = function(workspace) {
-  var mainWorkspace = workspace;
-  while (mainWorkspace.options.parentWorkspace) {
-    mainWorkspace = mainWorkspace.options.parentWorkspace;
-  }
-  var svg = mainWorkspace.getParentSvg();
-  var cachedSize = mainWorkspace.getCachedParentSvgSize();
-  var div = svg.parentNode;
-  if (!div) {
-    // Workspace deleted, or something.
-    return;
-  }
-  var width = div.offsetWidth;
-  var height = div.offsetHeight;
-  if (cachedSize.width != width) {
-    svg.setAttribute('width', width + 'px');
-    mainWorkspace.setCachedParentSvgSize(width, null);
-  }
-  if (cachedSize.height != height) {
-    svg.setAttribute('height', height + 'px');
-    mainWorkspace.setCachedParentSvgSize(null, height);
-  }
-  mainWorkspace.resize();
-};
+Blockly.svgResize = Blockly.common.svgResize;
 
 /**
  * Handle a key-down on SVG drawing surface. Does nothing if the main workspace
@@ -194,40 +164,14 @@ Blockly.svgResize = function(workspace) {
  */
 // TODO (https://github.com/google/blockly/issues/1998) handle cases where there
 // are multiple workspaces and non-main workspaces are able to accept input.
-Blockly.onKeyDown = function(e) {
-  var mainWorkspace = Blockly.mainWorkspace;
-  if (!mainWorkspace) {
-    return;
-  }
-
-  if (Blockly.utils.isTargetInput(e) ||
-      (mainWorkspace.rendered && !mainWorkspace.isVisible())) {
-    // When focused on an HTML text input widget, don't trap any keys.
-    // Ignore keypresses on rendered workspaces that have been explicitly
-    // hidden.
-    return;
-  }
-  Blockly.ShortcutRegistry.registry.onKeyDown(mainWorkspace, e);
-};
+Blockly.onKeyDown = Blockly.common.onKeyDown;
 
 /**
  * Delete the given block.
  * @param {!Blockly.BlockSvg} selected The block to delete.
  * @package
  */
-Blockly.deleteBlock = function(selected) {
-  if (!selected.workspace.isFlyout) {
-    Blockly.Events.setGroup(true);
-    Blockly.hideChaff();
-    if (selected.outputConnection) {
-      // Do not attempt to heal rows (https://github.com/google/blockly/issues/4832)
-      selected.dispose(false, true);
-    } else {
-      selected.dispose(/* heal */ true, true);
-    }
-    Blockly.Events.setGroup(false);
-  }
-};
+Blockly.deleteBlock = Blockly.common.deleteBlock;
 
 /**
  * Copy a block or workspace comment onto the local clipboard.
@@ -293,30 +237,13 @@ Blockly.duplicate = function(toDuplicate) {
  * @param {!Event} e Mouse down event.
  * @private
  */
-Blockly.onContextMenu_ = function(e) {
-  if (!Blockly.utils.isTargetInput(e)) {
-    // When focused on an HTML text input widget, don't cancel the context menu.
-    e.preventDefault();
-  }
-};
+Blockly.onContextMenu_ = Blockly.common.onContextMenu;
 
 /**
  * Close tooltips, context menus, dropdown selections, etc.
  * @param {boolean=} opt_onlyClosePopups Whether only popups should be closed.
  */
-Blockly.hideChaff = function(opt_onlyClosePopups) {
-  Blockly.Tooltip.hide();
-  Blockly.WidgetDiv.hide();
-  Blockly.DropDownDiv.hideWithoutAnimation();
-
-  var onlyClosePopups = !!opt_onlyClosePopups;
-  var workspace = Blockly.getMainWorkspace();
-  var autoHideables = workspace.getComponentManager().getComponents(
-      Blockly.ComponentManager.Capability.AUTOHIDEABLE, true);
-  autoHideables.forEach(function(autoHideable) {
-    autoHideable.autoHide(onlyClosePopups);
-  });
-};
+Blockly.hideChaff = Blockly.common.hideChaff;
 
 /**
  * Returns the main workspace.  Returns the last used main workspace (based on
@@ -324,9 +251,7 @@ Blockly.hideChaff = function(opt_onlyClosePopups) {
  * Blockly instances on a page.
  * @return {!Blockly.Workspace} The main workspace.
  */
-Blockly.getMainWorkspace = function() {
-  return /** @type {!Blockly.Workspace} */ (Blockly.mainWorkspace);
-};
+Blockly.getMainWorkspace = Blockly.common.getMainWorkspace;
 
 /**
  * Wrapper to window.alert() that app developers may override to
