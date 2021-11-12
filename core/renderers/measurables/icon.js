@@ -35,6 +35,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {Measurable}
  * @alias Blockly.blockRendering.Icon
+ * @type {blockRendering.Icon}
  */
 const Icon = function(constants, icon) {
   Icon.superClass_.constructor.call(this, constants);

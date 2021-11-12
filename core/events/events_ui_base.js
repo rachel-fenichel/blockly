@@ -32,6 +32,7 @@ const object = goog.require('Blockly.utils.object');
  * @extends {Abstract}
  * @constructor
  * @alias Blockly.Events.UiBase
+ * @type {UiBase}
  */
 const UiBase = function(opt_workspaceId) {
   UiBase.superClass_.constructor.call(this);

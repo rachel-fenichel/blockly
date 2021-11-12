@@ -36,6 +36,7 @@ const {StatementInput: BaseStatementInput} = goog.require('Blockly.blockRenderin
  * @constructor
  * @extends {BaseStatementInput}
  * @alias Blockly.geras.StatementInput
+ * @type {geras.StatementInput}
  */
 const StatementInput = function(constants, input) {
   StatementInput.superClass_.constructor.call(this, constants, input);

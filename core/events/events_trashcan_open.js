@@ -30,6 +30,7 @@ const {UiBase} = goog.require('Blockly.Events.UiBase');
  * @extends {UiBase}
  * @constructor
  * @alias Blockly.Events.TrashcanOpen
+ * @type {TrashcanOpen}
  */
 const TrashcanOpen = function(opt_isOpen, opt_workspaceId) {
   TrashcanOpen.superClass_.constructor.call(this, opt_workspaceId);

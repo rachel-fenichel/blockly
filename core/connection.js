@@ -41,6 +41,7 @@ goog.require('Blockly.constants');
  * @constructor
  * @implements {IASTNodeLocationWithBlock}
  * @alias Blockly.Connection
+ * @type {Connection}
  */
 const Connection = function(source, type) {
   /**

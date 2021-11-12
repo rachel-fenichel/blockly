@@ -35,6 +35,7 @@ const {UiBase} = goog.require('Blockly.Events.UiBase');
  * @extends {UiBase}
  * @constructor
  * @alias Blockly.Events.Click
+ * @type {Click}
  */
 const Click = function(opt_block, opt_workspaceId, opt_targetType) {
   const workspaceId = opt_block ? opt_block.workspace.id : opt_workspaceId;

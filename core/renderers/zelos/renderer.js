@@ -44,6 +44,7 @@ const {WorkspaceSvg} = goog.requireType('Blockly.WorkspaceSvg');
  * @constructor
  * @extends {BaseRenderer}
  * @alias Blockly.zelos.Renderer
+ * @type {zelos.Renderer}
  */
 const Renderer = function(name) {
   Renderer.superClass_.constructor.call(this, name);

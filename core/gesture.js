@@ -60,6 +60,7 @@ goog.require('Blockly.Events.Click');
  *     this gesture and has a reference to it.
  * @constructor
  * @alias Blockly.Gesture
+ * @type {Gesture}
  */
 const Gesture = function(e, creatorWorkspace) {
   /**

@@ -53,6 +53,7 @@ goog.require('Blockly.Events.BlockChange');
  * @extends {FieldDropdown}
  * @constructor
  * @alias Blockly.FieldVariable
+ * @type {FieldVariable}
  */
 const FieldVariable = function(
     varName, opt_validator, opt_variableTypes, opt_defaultType, opt_config) {

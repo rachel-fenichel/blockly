@@ -47,6 +47,7 @@ goog.require('Blockly.constants');
  * @param {!WorkspaceSvg} workspace The workspace to drag on.
  * @constructor
  * @alias Blockly.BubbleDragger
+ * @type {BubbleDragger}
  */
 const BubbleDragger = function(bubble, workspace) {
   /**

@@ -42,6 +42,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @package
  * @extends {BaseRenderInfo}
  * @alias Blockly.thrasos.RenderInfo
+ * @type {thrasos.RenderInfo}
  */
 const RenderInfo = function(renderer, block) {
   RenderInfo.superClass_.constructor.call(this, renderer, block);

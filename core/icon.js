@@ -33,6 +33,7 @@ const {Svg} = goog.require('Blockly.utils.Svg');
  * @constructor
  * @abstract
  * @alias Blockly.Icon
+ * @type {Icon}
  */
 const Icon = function(block) {
   /**

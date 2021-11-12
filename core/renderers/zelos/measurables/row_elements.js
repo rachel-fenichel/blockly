@@ -32,6 +32,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {Measurable}
  * @alias Blockly.zelos.RightConnectionShape
+ * @type {zelos.RightConnectionShape}
  */
 const RightConnectionShape = function(constants) {
   RightConnectionShape.superClass_.constructor.call(this, constants);

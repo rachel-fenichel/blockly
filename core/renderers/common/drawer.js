@@ -42,6 +42,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @package
  * @constructor
  * @alias Blockly.blockRendering.Drawer
+ * @type {blockRendering.Drawer}
  */
 const Drawer = function(block, info) {
   this.block_ = block;

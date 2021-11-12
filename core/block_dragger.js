@@ -45,6 +45,7 @@ goog.require('Blockly.Events.BlockMove');
  * @constructor
  * @implements {IBlockDragger}
  * @alias Blockly.BlockDragger
+ * @type {BlockDragger}
  */
 const BlockDragger = function(block, workspace) {
   /**

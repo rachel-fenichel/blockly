@@ -31,6 +31,7 @@ const {WorkspaceComment} = goog.requireType('Blockly.WorkspaceComment');
  * @extends {CommentBase}
  * @constructor
  * @alias Blockly.Events.CommentMove
+ * @type {CommentMove}
  */
 const CommentMove = function(opt_comment) {
   CommentMove.superClass_.constructor.call(this, opt_comment);

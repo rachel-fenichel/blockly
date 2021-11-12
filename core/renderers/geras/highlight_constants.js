@@ -30,6 +30,7 @@ const {ConstantProvider} = goog.requireType('Blockly.blockRendering.ConstantProv
  * @constructor
  * @package
  * @alias Blockly.geras.HighlightConstantProvider
+ * @type {geras.HighlightConstantProvider}
  */
 const HighlightConstantProvider = function(constants) {
   /**

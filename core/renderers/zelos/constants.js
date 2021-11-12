@@ -32,6 +32,7 @@ const {Svg} = goog.require('Blockly.utils.Svg');
  * @package
  * @extends {BaseConstantProvider}
  * @alias Blockly.zelos.ConstantProvider
+ * @type {zelos.ConstantProvider}
  */
 const ConstantProvider = function() {
   ConstantProvider.superClass_.constructor.call(this);

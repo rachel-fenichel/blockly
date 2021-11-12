@@ -34,6 +34,7 @@ const {Workspace} = goog.requireType('Blockly.Workspace');
  * @constructor
  * @package
  * @alias Blockly.ThemeManager
+ * @type {ThemeManager}
  */
 const ThemeManager = function(workspace, theme) {
   /**

@@ -27,6 +27,7 @@ const {ConstantProvider: BaseConstantProvider} = goog.require('Blockly.blockRend
  * @package
  * @extends {BaseConstantProvider}
  * @alias Blockly.geras.ConstantProvider
+ * @type {geras.ConstantProvider}
  */
 const ConstantProvider = function() {
   ConstantProvider.superClass_.constructor.call(this);

@@ -34,6 +34,7 @@ const {Theme} = goog.requireType('Blockly.Theme');
  * @constructor
  * @package
  * @alias Blockly.blockRendering.ConstantProvider
+ * @type {blockRendering.ConstantProvider}
  */
 const ConstantProvider = function() {
   /**

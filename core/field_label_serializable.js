@@ -38,6 +38,7 @@ const {FieldLabel} = goog.require('Blockly.FieldLabel');
  * @constructor
  *
  * @alias Blockly.FieldLabelSerializable
+ * @type {FieldLabelSerializable}
  */
 const FieldLabelSerializable = function(opt_value, opt_class, opt_config) {
   FieldLabelSerializable.superClass_.constructor.call(

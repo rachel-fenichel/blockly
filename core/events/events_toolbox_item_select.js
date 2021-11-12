@@ -32,6 +32,7 @@ const {UiBase} = goog.require('Blockly.Events.UiBase');
  * @extends {UiBase}
  * @constructor
  * @alias Blockly.Events.ToolboxItemSelect
+ * @type {ToolboxItemSelect}
  */
 const ToolboxItemSelect = function(opt_oldItem, opt_newItem, opt_workspaceId) {
   ToolboxItemSelect.superClass_.constructor.call(this, opt_workspaceId);

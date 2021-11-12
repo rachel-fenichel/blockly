@@ -34,6 +34,7 @@ goog.requireType('Blockly.Procedures');
  *     before all variable names (but not procedure names).
  * @constructor
  * @alias Blockly.Names
+ * @type {Names}
  */
 const Names = function(reservedWords, opt_variablePrefix) {
   this.variablePrefix_ = opt_variablePrefix || '';

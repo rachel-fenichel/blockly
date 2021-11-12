@@ -28,6 +28,7 @@ const {Block} = goog.requireType('Blockly.Block');
  * @extends {Abstract}
  * @constructor
  * @alias Blockly.Events.BlockBase
+ * @type {BlockBase}
  */
 const BlockBase = function(opt_block) {
   BlockBase.superClass_.constructor.call(this);

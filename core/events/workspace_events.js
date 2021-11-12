@@ -33,6 +33,7 @@ const {Workspace} = goog.requireType('Blockly.Workspace');
  * @extends {Abstract}
  * @constructor
  * @alias Blockly.Events.FinishedLoading
+ * @type {FinishedLoading}
  */
 const FinishedLoading = function(opt_workspace) {
   /**

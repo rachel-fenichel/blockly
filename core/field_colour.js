@@ -46,6 +46,7 @@ goog.require('Blockly.Events.BlockChange');
  * @extends {Field}
  * @constructor
  * @alias Blockly.FieldColour
+ * @type {FieldColour}
  */
 const FieldColour = function(opt_value, opt_validator, opt_config) {
   FieldColour.superClass_.constructor.call(

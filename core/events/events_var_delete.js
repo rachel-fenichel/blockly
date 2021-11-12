@@ -30,6 +30,7 @@ const {VariableModel} = goog.requireType('Blockly.VariableModel');
  * @extends {VarBase}
  * @constructor
  * @alias Blockly.Events.VarDelete
+ * @type {VarDelete}
  */
 const VarDelete = function(opt_variable) {
   VarDelete.superClass_.constructor.call(this, opt_variable);

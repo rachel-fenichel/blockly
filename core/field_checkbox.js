@@ -38,6 +38,7 @@ goog.require('Blockly.Events.BlockChange');
  * @extends {Field}
  * @constructor
  * @alias Blockly.FieldCheckbox
+ * @type {FieldCheckbox}
  */
 const FieldCheckbox = function(opt_value, opt_validator, opt_config) {
   /**

@@ -29,6 +29,7 @@ goog.module('Blockly.utils.Rect');
  * @struct
  * @constructor
  * @alias Blockly.utils.Rect
+ * @type {utils.Rect}
  */
 const Rect = function(top, bottom, left, right) {
   /** @type {number} */

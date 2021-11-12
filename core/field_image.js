@@ -41,6 +41,7 @@ const {Svg} = goog.require('Blockly.utils.Svg');
  * @extends {Field}
  * @constructor
  * @alias Blockly.FieldImage
+ * @type {FieldImage}
  */
 const FieldImage = function(
     src, width, height, opt_alt, opt_onClick, opt_flipRtl, opt_config) {

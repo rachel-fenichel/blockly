@@ -59,6 +59,7 @@ goog.require('Blockly.Events.TrashcanOpen');
  * @implements {IPositionable}
  * @extends {DeleteArea}
  * @alias Blockly.Trashcan
+ * @type {Trashcan}
  */
 const Trashcan = function(workspace) {
   Trashcan.superClass_.constructor.call(this);

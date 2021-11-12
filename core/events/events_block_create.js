@@ -32,6 +32,7 @@ const {Block} = goog.requireType('Blockly.Block');
  * @extends {BlockBase}
  * @constructor
  * @alias Blockly.Events.BlockCreate
+ * @type {BlockCreate}
  */
 const BlockCreate = function(opt_block) {
   BlockCreate.superClass_.constructor.call(this, opt_block);

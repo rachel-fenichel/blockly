@@ -32,6 +32,7 @@ const {ConstantProvider} = goog.requireType('Blockly.blockRendering.ConstantProv
  * @constructor
  * @extends {BaseBottomRow}
  * @alias Blockly.zelos.BottomRow
+ * @type {zelos.BottomRow}
  */
 const BottomRow = function(constants) {
   BottomRow.superClass_.constructor.call(this, constants);

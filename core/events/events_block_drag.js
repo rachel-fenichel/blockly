@@ -34,6 +34,7 @@ const {UiBase} = goog.require('Blockly.Events.UiBase');
  * @extends {UiBase}
  * @constructor
  * @alias Blockly.Events.BlockDrag
+ * @type {BlockDrag}
  */
 const BlockDrag = function(opt_block, opt_isStart, opt_blocks) {
   const workspaceId = opt_block ? opt_block.workspace.id : undefined;

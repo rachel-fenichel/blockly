@@ -36,6 +36,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {InputConnection}
  * @alias Blockly.blockRendering.ExternalValueInput
+ * @type {blockRendering.ExternalValueInput}
  */
 const ExternalValueInput = function(constants, input) {
   ExternalValueInput.superClass_.constructor.call(this, constants, input);

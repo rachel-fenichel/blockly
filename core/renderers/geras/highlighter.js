@@ -45,6 +45,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @package
  * @constructor
  * @alias Blockly.geras.Highlighter
+ * @type {geras.Highlighter}
  */
 const Highlighter = function(info) {
   this.info_ = info;

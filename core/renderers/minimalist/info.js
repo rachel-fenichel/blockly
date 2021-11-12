@@ -36,6 +36,7 @@ const {Renderer} = goog.requireType('Blockly.minimalist.Renderer');
  * @package
  * @extends {BaseRenderInfo}
  * @alias Blockly.minimalist.RenderInfo
+ * @type {minimalist.RenderInfo}
  */
 const RenderInfo = function(renderer, block) {
   RenderInfo.superClass_.constructor.call(this, renderer, block);

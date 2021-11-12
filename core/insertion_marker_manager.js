@@ -43,6 +43,7 @@ const {WorkspaceSvg} = goog.requireType('Blockly.WorkspaceSvg');
  * @param {!BlockSvg} block The top block in the stack being dragged.
  * @constructor
  * @alias Blockly.InsertionMarkerManager
+ * @type {InsertionMarkerManager}
  */
 const InsertionMarkerManager = function(block) {
   common.setSelected(block);

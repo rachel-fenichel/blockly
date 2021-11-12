@@ -30,6 +30,7 @@ const {WorkspaceSvg} = goog.requireType('Blockly.WorkspaceSvg');
  * @param {!WorkspaceSvg} workspace The workspace to drag.
  * @constructor
  * @alias Blockly.WorkspaceDragger
+ * @type {WorkspaceDragger}
  */
 const WorkspaceDragger = function(workspace) {
   /**

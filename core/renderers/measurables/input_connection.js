@@ -33,6 +33,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {Connection}
  * @alias Blockly.blockRendering.InputConnection
+ * @type {blockRendering.InputConnection}
  */
 const InputConnection = function(constants, input) {
   InputConnection.superClass_.constructor.call(

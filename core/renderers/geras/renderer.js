@@ -40,6 +40,7 @@ const {Theme} = goog.requireType('Blockly.Theme');
  * @constructor
  * @extends {BaseRenderer}
  * @alias Blockly.geras.Renderer
+ * @type {geras.Renderer}
  */
 const Renderer = function(name) {
   Renderer.superClass_.constructor.call(this, name);

@@ -30,6 +30,7 @@ const {Renderer: BaseRenderer} = goog.require('Blockly.blockRendering.Renderer')
  * @constructor
  * @extends {BaseRenderer}
  * @alias Blockly.thrasos.Renderer
+ * @type {thrasos.Renderer}
  */
 const Renderer = function(name) {
   Renderer.superClass_.constructor.call(this, name);

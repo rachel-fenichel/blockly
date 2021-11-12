@@ -36,6 +36,7 @@ const {Svg} = goog.require('Blockly.utils.Svg');
  * @param {!Element} container Containing element.
  * @constructor
  * @alias Blockly.WorkspaceDragSurfaceSvg
+ * @type {WorkspaceDragSurfaceSvg}
  */
 const WorkspaceDragSurfaceSvg = function(container) {
   this.container_ = container;

@@ -33,6 +33,7 @@ const {Workspace} = goog.requireType('Blockly.Workspace');
  * @param {string} name Language name of this generator.
  * @constructor
  * @alias Blockly.Generator
+ * @type {Generator}
  */
 const Generator = function(name) {
   this.name_ = name;

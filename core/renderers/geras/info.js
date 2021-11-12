@@ -48,6 +48,7 @@ const {inputTypes} = goog.require('Blockly.inputTypes');
  * @package
  * @extends {BaseRenderInfo}
  * @alias Blockly.geras.RenderInfo
+ * @type {geras.RenderInfo}
  */
 const RenderInfo = function(renderer, block) {
   RenderInfo.superClass_.constructor.call(this, renderer, block);

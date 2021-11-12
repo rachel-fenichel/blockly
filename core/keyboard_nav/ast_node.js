@@ -45,6 +45,7 @@ const {Workspace} = goog.requireType('Blockly.Workspace');
  * @param {!ASTNode.Params=} opt_params Optional dictionary of options.
  * @constructor
  * @alias Blockly.ASTNode
+ * @type {ASTNode}
  */
 const ASTNode = function(type, location, opt_params) {
   if (!location) {

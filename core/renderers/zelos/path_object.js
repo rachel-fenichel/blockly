@@ -37,6 +37,7 @@ const {Theme} = goog.requireType('Blockly.Theme');
  * @extends {BasePathObject}
  * @package
  * @alias Blockly.zelos.PathObject
+ * @type {zelos.PathObject}
  */
 const PathObject = function(root, style, constants) {
   PathObject.superClass_.constructor.call(this, root, style, constants);

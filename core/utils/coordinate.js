@@ -26,6 +26,7 @@ goog.module('Blockly.utils.Coordinate');
  * @struct
  * @constructor
  * @alias Blockly.utils.Coordinate
+ * @type {utils.Coordinate}
  */
 const Coordinate = function(x, y) {
   /**

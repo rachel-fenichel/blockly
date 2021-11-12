@@ -93,6 +93,7 @@ goog.require('Blockly.Touch');
  * @implements {IDraggable}
  * @constructor
  * @alias Blockly.BlockSvg
+ * @type {BlockSvg}
  */
 const BlockSvg = function(workspace, prototypeName, opt_id) {
   // Create core elements for the block.

@@ -40,6 +40,7 @@ goog.require('Blockly.Events.VarRename');
  * @param {!Workspace} workspace The workspace this map belongs to.
  * @constructor
  * @alias Blockly.VariableMap
+ * @type {VariableMap}
  */
 const VariableMap = function(workspace) {
   /**

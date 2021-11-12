@@ -71,6 +71,7 @@ goog.require('Blockly.Events.BlockMove');
  * @implements {IDeletable}
  * @throws When the prototypeName is not valid or not allowed.
  * @alias Blockly.Block
+ * @type {Block}
  */
 const Block = function(workspace, prototypeName, opt_id) {
   const {Generator} = goog.module.get('Blockly.Generator');

@@ -36,6 +36,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {InputConnection}
  * @alias Blockly.blockRendering.StatementInput
+ * @type {blockRendering.StatementInput}
  */
 const StatementInput = function(constants, input) {
   StatementInput.superClass_.constructor.call(this, constants, input);

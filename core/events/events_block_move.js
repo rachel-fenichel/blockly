@@ -32,6 +32,7 @@ const {Coordinate} = goog.require('Blockly.utils.Coordinate');
  * @extends {BlockBase}
  * @constructor
  * @alias Blockly.Events.BlockMove
+ * @type {BlockMove}
  */
 const BlockMove = function(opt_block) {
   BlockMove.superClass_.constructor.call(this, opt_block);

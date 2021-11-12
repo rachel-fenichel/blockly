@@ -64,6 +64,7 @@ goog.require('Blockly.blockRendering');
  * @implements {IFlyout}
  * @extends {DeleteArea}
  * @alias Blockly.Flyout
+ * @type {Flyout}
  */
 const Flyout = function(workspaceOptions) {
   Flyout.superClass_.constructor.call(this);

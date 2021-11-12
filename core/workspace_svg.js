@@ -123,6 +123,7 @@ goog.require('Blockly.Msg');
  * @implements {IASTNodeLocationSvg}
  * @constructor
  * @alias Blockly.WorkspaceSvg
+ * @type {WorkspaceSvg}
  */
 const WorkspaceSvg = function(
     options, opt_blockDragSurface, opt_wsDragSurface) {

@@ -57,6 +57,7 @@ const WorkspaceDB_ = Object.create(null);
  * @constructor
  * @implements {IASTNodeLocation}
  * @alias Blockly.Workspace
+ * @type {Workspace}
  */
 const Workspace = function(opt_options) {
   /** @type {string} */

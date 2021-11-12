@@ -31,6 +31,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {Row}
  * @alias Blockly.blockRendering.InputRow
+ * @type {blockRendering.InputRow}
  */
 const InputRow = function(constants) {
   InputRow.superClass_.constructor.call(this, constants);

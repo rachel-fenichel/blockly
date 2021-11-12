@@ -44,6 +44,7 @@ const {Svg} = goog.require('Blockly.utils.Svg');
  * @extends {FieldTextInput}
  * @constructor
  * @alias Blockly.FieldMultilineInput
+ * @type {FieldMultilineInput}
  */
 const FieldMultilineInput = function(opt_value, opt_validator, opt_config) {
   FieldMultilineInput.superClass_.constructor.call(

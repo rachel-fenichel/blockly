@@ -39,6 +39,7 @@ const {WorkspaceSvg} = goog.requireType('Blockly.WorkspaceSvg');
  * @extends {Gesture}
  * @constructor
  * @alias Blockly.TouchGesture
+ * @type {TouchGesture}
  */
 const TouchGesture = function(e, creatorWorkspace) {
   TouchGesture.superClass_.constructor.call(this, e, creatorWorkspace);

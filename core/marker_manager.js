@@ -29,6 +29,7 @@ const {WorkspaceSvg} = goog.requireType('Blockly.WorkspaceSvg');
  * @constructor
  * @alias Blockly.MarkerManager
  * @package
+ * @type {MarkerManager}
  */
 const MarkerManager = function(workspace) {
   /**

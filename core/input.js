@@ -40,6 +40,7 @@ goog.require('Blockly.FieldLabel');
  * @param {Connection} connection Optional connection for this input.
  * @constructor
  * @alias Blockly.Input
+ * @type {Input}
  */
 const Input = function(type, name, block, connection) {
   if (type !== inputTypes.DUMMY && !name) {

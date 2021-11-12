@@ -32,6 +32,7 @@ const {RenderInfo} = goog.requireType('Blockly.minimalist.RenderInfo');
  * @constructor
  * @extends {BaseDrawer}
  * @alias Blockly.minimalist.Drawer
+ * @type {minimalist.Drawer}
  */
 const Drawer = function(block, info) {
   Drawer.superClass_.constructor.call(this, block, info);

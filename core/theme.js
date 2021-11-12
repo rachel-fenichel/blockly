@@ -31,6 +31,7 @@ const registry = goog.require('Blockly.registry');
  *     component names to style value.
  * @constructor
  * @alias Blockly.Theme
+ * @type {Theme}
  */
 const Theme = function(
     name, opt_blockStyles, opt_categoryStyles, opt_componentStyles) {

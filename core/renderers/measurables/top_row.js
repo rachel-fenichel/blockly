@@ -38,6 +38,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {Row}
  * @alias Blockly.blockRendering.TopRow
+ * @type {blockRendering.TopRow}
  */
 const TopRow = function(constants) {
   TopRow.superClass_.constructor.call(this, constants);

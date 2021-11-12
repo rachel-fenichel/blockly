@@ -38,6 +38,7 @@ const {FieldTextInput} = goog.require('Blockly.FieldTextInput');
  * @extends {FieldTextInput}
  * @constructor
  * @alias Blockly.FieldNumber
+ * @type {FieldNumber}
  */
 const FieldNumber = function(
     opt_value, opt_min, opt_max, opt_precision, opt_validator, opt_config) {

@@ -27,6 +27,7 @@ goog.module('Blockly.utils.Size');
  * @struct
  * @constructor
  * @alias Blockly.utils.Size
+ * @type {utils.Size}
  */
 const Size = function(width, height) {
   /**

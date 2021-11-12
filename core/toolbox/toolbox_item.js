@@ -38,6 +38,7 @@ const {WorkspaceSvg} = goog.requireType('Blockly.WorkspaceSvg');
  * @constructor
  * @implements {IToolboxItem}
  * @alias Blockly.ToolboxItem
+ * @type {ToolboxItem}
  */
 const ToolboxItem = function(toolboxItemDef, toolbox, opt_parent) {
   /**

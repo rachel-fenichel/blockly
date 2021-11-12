@@ -38,6 +38,7 @@ const {Row} = goog.requireType('Blockly.blockRendering.Row');
  * @constructor
  * @extends {BaseDrawer}
  * @alias Blockly.zelos.Drawer
+ * @type {zelos.Drawer}
  */
 const Drawer = function(block, info) {
   Drawer.superClass_.constructor.call(this, block, info);

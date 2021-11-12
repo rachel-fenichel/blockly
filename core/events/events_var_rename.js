@@ -31,6 +31,7 @@ const {VariableModel} = goog.requireType('Blockly.VariableModel');
  * @extends {VarBase}
  * @constructor
  * @alias Blockly.Events.VarRename
+ * @type {VarRename}
  */
 const VarRename = function(opt_variable, newName) {
   VarRename.superClass_.constructor.call(this, opt_variable);

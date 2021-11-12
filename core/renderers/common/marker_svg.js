@@ -69,6 +69,7 @@ const HEIGHT_MULTIPLIER = 3 / 4;
  * @param {!Marker} marker The marker to draw.
  * @constructor
  * @alias Blockly.blockRendering.MarkerSvg
+ * @type {blockRendering.MarkerSvg}
  */
 const MarkerSvg = function(workspace, constants, marker) {
   /**

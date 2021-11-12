@@ -36,6 +36,7 @@ const {Input} = goog.requireType('Blockly.Input');
  * @constructor
  * @extends {BaseInlineInput}
  * @alias Blockly.geras.InlineInput
+ * @type {geras.InlineInput}
  */
 const InlineInput = function(constants, input) {
   InlineInput.superClass_.constructor.call(this, constants, input);

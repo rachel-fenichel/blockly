@@ -36,6 +36,7 @@ const {Field} = goog.require('Blockly.Field');
  * @extends {Field}
  * @constructor
  * @alias Blockly.FieldLabel
+ * @type {FieldLabel}
  */
 const FieldLabel = function(opt_value, opt_class, opt_config) {
   /**

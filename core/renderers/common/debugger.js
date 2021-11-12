@@ -43,6 +43,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @package
  * @constructor
  * @alias Blockly.blockRendering.Debug
+ * @type {blockRendering.Debug}
  */
 const Debug = function(constants) {
   /**

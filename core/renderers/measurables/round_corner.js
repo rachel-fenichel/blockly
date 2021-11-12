@@ -33,6 +33,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {Measurable}
  * @alias Blockly.blockRendering.RoundCorner
+ * @type {blockRendering.RoundCorner}
  */
 const RoundCorner = function(constants, opt_position) {
   RoundCorner.superClass_.constructor.call(this, constants);

@@ -28,6 +28,7 @@ const {VariableModel} = goog.requireType('Blockly.VariableModel');
  * @extends {Abstract}
  * @constructor
  * @alias Blockly.Events.VarBase
+ * @type {VarBase}
  */
 const VarBase = function(opt_variable) {
   VarBase.superClass_.constructor.call(this);

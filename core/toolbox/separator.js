@@ -35,6 +35,7 @@ const {ToolboxItem} = goog.require('Blockly.ToolboxItem');
  * @constructor
  * @extends {ToolboxItem}
  * @alias Blockly.ToolboxSeparator
+ * @type {ToolboxSeparator}
  */
 const ToolboxSeparator = function(separatorDef, toolbox) {
   ToolboxSeparator.superClass_.constructor.call(this, separatorDef, toolbox);

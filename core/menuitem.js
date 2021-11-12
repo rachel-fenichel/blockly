@@ -28,6 +28,7 @@ const idGenerator = goog.require('Blockly.utils.idGenerator');
  * @param {string=} opt_value Data/model associated with the menu item.
  * @constructor
  * @alias Blockly.MenuItem
+ * @type {MenuItem}
  */
 const MenuItem = function(content, opt_value) {
   /**

@@ -72,6 +72,7 @@ goog.require('Blockly.Events.ToolboxItemSelect');
  * @implements {IToolbox}
  * @extends {DeleteArea}
  * @alias Blockly.Toolbox
+ * @type {Toolbox}
  */
 const Toolbox = function(workspace) {
   Toolbox.superClass_.constructor.call(this);

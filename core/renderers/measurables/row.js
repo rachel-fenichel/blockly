@@ -33,6 +33,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @package
  * @constructor
  * @alias Blockly.blockRendering.Row
+ * @type {blockRendering.Row}
  */
 const Row = function(constants) {
   /**

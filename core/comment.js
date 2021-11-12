@@ -48,6 +48,7 @@ goog.require('Blockly.Warning');
  * @extends {Icon}
  * @constructor
  * @alias Blockly.Comment
+ * @type {Comment}
  */
 const Comment = function(block) {
   Comment.superClass_.constructor.call(this, block);

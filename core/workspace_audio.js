@@ -30,6 +30,7 @@ const {globalThis} = goog.require('Blockly.utils.global');
  *     this audio object belongs to, or null.
  * @constructor
  * @alias Blockly.WorkspaceAudio
+ * @type {WorkspaceAudio}
  */
 const WorkspaceAudio = function(parentWorkspace) {
   /**

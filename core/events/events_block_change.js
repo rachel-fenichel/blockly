@@ -37,6 +37,7 @@ const {Block} = goog.requireType('Blockly.Block');
  * @extends {BlockBase}
  * @constructor
  * @alias Blockly.Events.BlockChange
+ * @type {BlockChange}
  */
 const BlockChange = function(
     opt_block, opt_element, opt_name, opt_oldValue, opt_newValue) {

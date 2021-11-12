@@ -83,6 +83,7 @@ const TEXTAREA_OFFSET = 2;
  * @implements {ICopyable}
  * @constructor
  * @alias Blockly.WorkspaceCommentSvg
+ * @type {WorkspaceCommentSvg}
  */
 const WorkspaceCommentSvg = function(
     workspace, content, height, width, opt_id) {

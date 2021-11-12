@@ -42,6 +42,7 @@ const {Svg} = goog.require('Blockly.utils.Svg');
  * @extends {Connection}
  * @constructor
  * @alias Blockly.RenderedConnection
+ * @type {RenderedConnection}
  */
 const RenderedConnection = function(source, type) {
   RenderedConnection.superClass_.constructor.call(this, source, type);

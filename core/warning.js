@@ -37,6 +37,7 @@ goog.require('Blockly.Events.BubbleOpen');
  * @extends {Icon}
  * @constructor
  * @alias Blockly.Warning
+ * @type {Warning}
  */
 const Warning = function(block) {
   Warning.superClass_.constructor.call(this, block);

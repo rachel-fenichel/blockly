@@ -63,6 +63,7 @@ const {inputTypes} = goog.require('Blockly.inputTypes');
  * @constructor
  * @package
  * @alias Blockly.blockRendering.RenderInfo
+ * @type {blockRendering.RenderInfo}
  */
 const RenderInfo = function(renderer, block) {
   this.block_ = block;

@@ -37,6 +37,7 @@ const {UiBase} = goog.require('Blockly.Events.UiBase');
  * @deprecated December 2020. Instead use a more specific UI event.
  * @constructor
  * @alias Blockly.Events.Ui
+ * @type {Ui}
  */
 const Ui = function(opt_block, opt_element, opt_oldValue, opt_newValue) {
   const workspaceId = opt_block ? opt_block.workspace.id : undefined;

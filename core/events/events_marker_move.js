@@ -39,6 +39,7 @@ const {Workspace} = goog.requireType('Blockly.Workspace');
  * @extends {UiBase}
  * @constructor
  * @alias Blockly.Events.MarkerMove
+ * @type {MarkerMove}
  */
 const MarkerMove = function(opt_block, isCursor, opt_oldNode, opt_newNode) {
   let workspaceId = opt_block ? opt_block.workspace.id : undefined;

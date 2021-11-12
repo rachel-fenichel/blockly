@@ -50,6 +50,7 @@ const {Svg} = goog.require('Blockly.utils.Svg');
  * @constructor
  * @throws {TypeError} If `menuGenerator` options are incorrectly structured.
  * @alias Blockly.FieldDropdown
+ * @type {FieldDropdown}
  */
 const FieldDropdown = function(menuGenerator, opt_validator, opt_config) {
   if (typeof menuGenerator !== 'function') {

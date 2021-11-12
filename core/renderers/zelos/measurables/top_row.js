@@ -34,6 +34,7 @@ const {TopRow: BaseTopRow} = goog.require('Blockly.blockRendering.TopRow');
  * @constructor
  * @extends {BaseTopRow}
  * @alias Blockly.zelos.TopRow
+ * @type {zelos.TopRow}
  */
 const TopRow = function(constants) {
   TopRow.superClass_.constructor.call(this, constants);

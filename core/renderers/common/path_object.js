@@ -42,6 +42,7 @@ const {Theme} = goog.requireType('Blockly.Theme');
  * @implements {IPathObject}
  * @package
  * @alias Blockly.blockRendering.PathObject
+ * @type {blockRendering.PathObject}
  */
 const PathObject = function(root, style, constants) {
   /**

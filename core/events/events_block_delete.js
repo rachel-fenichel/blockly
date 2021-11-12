@@ -32,6 +32,7 @@ const {Block} = goog.requireType('Blockly.Block');
  * @extends {BlockBase}
  * @constructor
  * @alias Blockly.Events.BlockDelete
+ * @type {BlockDelete}
  */
 const BlockDelete = function(opt_block) {
   BlockDelete.superClass_.constructor.call(this, opt_block);

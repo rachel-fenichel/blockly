@@ -33,6 +33,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {Measurable}
  * @alias Blockly.blockRendering.InRowSpacer
+ * @type {blockRendering.InRowSpacer}
  */
 const InRowSpacer = function(constants, width) {
   InRowSpacer.superClass_.constructor.call(this, constants);

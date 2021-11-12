@@ -36,6 +36,7 @@ const {WorkspaceSvg} = goog.requireType('Blockly.WorkspaceSvg');
  * @param {number=} opt_margin The margin to apply to these scrollbars.
  * @constructor
  * @alias Blockly.ScrollbarPair
+ * @type {ScrollbarPair}
  */
 const ScrollbarPair = function(
     workspace, addHorizontal, addVertical, opt_class, opt_margin) {

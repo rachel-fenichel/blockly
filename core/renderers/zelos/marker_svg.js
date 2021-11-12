@@ -42,6 +42,7 @@ const {WorkspaceSvg} = goog.requireType('Blockly.WorkspaceSvg');
  * @constructor
  * @extends {BaseMarkerSvg}
  * @alias Blockly.zelos.MarkerSvg
+ * @type {zelos.MarkerSvg}
  */
 const MarkerSvg = function(workspace, constants, marker) {
   MarkerSvg.superClass_.constructor.call(this, workspace, constants, marker);

@@ -34,6 +34,7 @@ const {Renderer: BaseRenderer} = goog.require('Blockly.blockRendering.Renderer')
  * @constructor
  * @extends {BaseRenderer}
  * @alias Blockly.minimalist.Renderer
+ * @type {minimalist.Renderer}
  */
 const Renderer = function(name) {
   Renderer.superClass_.constructor.call(this, name);

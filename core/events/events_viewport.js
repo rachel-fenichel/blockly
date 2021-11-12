@@ -36,6 +36,7 @@ const {UiBase} = goog.require('Blockly.Events.UiBase');
  * @extends {UiBase}
  * @constructor
  * @alias Blockly.Events.ViewportChange
+ * @type {ViewportChange}
  */
 const ViewportChange = function(
     opt_top, opt_left, opt_scale, opt_workspaceId, opt_oldScale) {

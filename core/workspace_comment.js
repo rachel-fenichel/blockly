@@ -41,6 +41,7 @@ goog.require('Blockly.Events.CommentMove');
  *     create a new ID.
  * @constructor
  * @alias Blockly.WorkspaceComment
+ * @type {WorkspaceComment}
  */
 const WorkspaceComment = function(workspace, content, height, width, opt_id) {
   /** @type {string} */

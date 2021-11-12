@@ -32,6 +32,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {Measurable}
  * @alias Blockly.blockRendering.Hat
+ * @type {blockRendering.Hat}
  */
 const Hat = function(constants) {
   Hat.superClass_.constructor.call(this, constants);

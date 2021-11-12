@@ -31,6 +31,7 @@ const {WorkspaceSvg} = goog.requireType('Blockly.WorkspaceSvg');
  * @extends {MetricsManager}
  * @constructor
  * @alias Blockly.FlyoutMetricsManager
+ * @type {FlyoutMetricsManager}
  */
 const FlyoutMetricsManager = function(workspace, flyout) {
   /**

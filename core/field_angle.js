@@ -43,6 +43,7 @@ const {Svg} = goog.require('Blockly.utils.Svg');
  * @extends {FieldTextInput}
  * @constructor
  * @alias Blockly.FieldAngle
+ * @type {FieldAngle}
  */
 const FieldAngle = function(opt_value, opt_validator, opt_config) {
   /**

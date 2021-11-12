@@ -29,6 +29,7 @@ const {UiBase} = goog.require('Blockly.Events.UiBase');
  * @extends {UiBase}
  * @constructor
  * @alias Blockly.Events.ThemeChange
+ * @type {ThemeChange}
  */
 const ThemeChange = function(opt_themeName, opt_workspaceId) {
   ThemeChange.superClass_.constructor.call(this, opt_workspaceId);

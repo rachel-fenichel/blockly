@@ -30,6 +30,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @package
  * @constructor
  * @alias Blockly.blockRendering.Measurable
+ * @type {blockRendering.Measurable}
  */
 const Measurable = function(constants) {
   this.width = 0;

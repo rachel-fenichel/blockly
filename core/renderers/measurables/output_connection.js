@@ -37,6 +37,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {Connection}
  * @alias Blockly.blockRendering.OutputConnection
+ * @type {blockRendering.OutputConnection}
  */
 const OutputConnection = function(constants, connectionModel) {
   OutputConnection.superClass_.constructor.call(

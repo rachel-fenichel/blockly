@@ -51,6 +51,7 @@ goog.require('Blockly.Workspace');
  * @implements {IBubble}
  * @constructor
  * @alias Blockly.Bubble
+ * @type {Bubble}
  */
 const Bubble = function(
     workspace, content, shape, anchorXY, bubbleWidth, bubbleHeight) {

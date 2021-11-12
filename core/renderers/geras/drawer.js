@@ -37,6 +37,7 @@ const {RenderInfo} = goog.requireType('Blockly.geras.RenderInfo');
  * @constructor
  * @extends {BaseDrawer}
  * @alias Blockly.geras.Drawer
+ * @type {geras.Drawer}
  */
 const Drawer = function(block, info) {
   Drawer.superClass_.constructor.call(this, block, info);

@@ -38,6 +38,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {Measurable}
  * @alias Blockly.blockRendering.Field
+ * @type {blockRendering.Field}
  */
 const Field = function(constants, field, parentInput) {
   Field.superClass_.constructor.call(this, constants);

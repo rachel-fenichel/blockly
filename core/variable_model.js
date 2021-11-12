@@ -37,6 +37,7 @@ goog.require('Blockly.Events.VarCreate');
  * @see {Blockly.FieldVariable}
  * @constructor
  * @alias Blockly.VariableModel
+ * @type {VariableModel}
  */
 const VariableModel = function(workspace, name, opt_type, opt_id) {
   /**

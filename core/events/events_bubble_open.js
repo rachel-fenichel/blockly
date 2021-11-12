@@ -35,6 +35,7 @@ const {UiBase} = goog.require('Blockly.Events.UiBase');
  * @extends {UiBase}
  * @constructor
  * @alias Blockly.Events.BubbleOpen
+ * @type {BubbleOpen}
  */
 const BubbleOpen = function(opt_block, opt_isOpen, opt_bubbleType) {
   const workspaceId = opt_block ? opt_block.workspace.id : undefined;

@@ -32,6 +32,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {Measurable}
  * @alias Blockly.blockRendering.JaggedEdge
+ * @type {blockRendering.JaggedEdge}
  */
 const JaggedEdge = function(constants) {
   JaggedEdge.superClass_.constructor.call(this, constants);

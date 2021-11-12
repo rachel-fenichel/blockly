@@ -41,6 +41,7 @@ const {ToolboxSeparator} = goog.require('Blockly.ToolboxSeparator');
  * @extends {ToolboxCategory}
  * @implements {ICollapsibleToolboxItem}
  * @alias Blockly.CollapsibleToolboxCategory
+ * @type {CollapsibleToolboxCategory}
  */
 const CollapsibleToolboxCategory = function(categoryDef, toolbox, opt_parent) {
   /**

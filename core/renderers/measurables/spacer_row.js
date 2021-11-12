@@ -32,6 +32,7 @@ const {Types} = goog.require('Blockly.blockRendering.Types');
  * @constructor
  * @extends {Row}
  * @alias Blockly.blockRendering.SpacerRow
+ * @type {blockRendering.SpacerRow}
  */
 const SpacerRow = function(constants, height, width) {
   SpacerRow.superClass_.constructor.call(this, constants);

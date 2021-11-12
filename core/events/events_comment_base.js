@@ -35,6 +35,7 @@ const {WorkspaceComment} = goog.requireType('Blockly.WorkspaceComment');
  * @extends {AbstractEvents}
  * @constructor
  * @alias Blockly.Events.CommentBase
+ * @type {CommentBase}
  */
 const CommentBase = function(opt_comment) {
   /**

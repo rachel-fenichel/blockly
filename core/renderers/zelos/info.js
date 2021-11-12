@@ -52,6 +52,7 @@ const {inputTypes} = goog.require('Blockly.inputTypes');
  * @package
  * @extends {BaseRenderInfo}
  * @alias Blockly.zelos.RenderInfo
+ * @type {zelos.RenderInfo}
  */
 const RenderInfo = function(renderer, block) {
   RenderInfo.superClass_.constructor.call(this, renderer, block);

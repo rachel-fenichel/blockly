@@ -42,6 +42,7 @@ goog.require('Blockly.Events.Click');
  * @constructor
  * @implements {IPositionable}
  * @alias Blockly.ZoomControls
+ * @type {ZoomControls}
  */
 const ZoomControls = function(workspace) {
   /**

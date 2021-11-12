@@ -38,6 +38,7 @@ const {Theme} = goog.requireType('Blockly.Theme');
  * @extends {BasePathObject}
  * @package
  * @alias Blockly.geras.PathObject
+ * @type {geras.PathObject}
  */
 const PathObject = function(root, style, constants) {
   /**

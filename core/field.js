@@ -78,6 +78,7 @@ goog.require('Blockly.Gesture');
  * @implements {IKeyboardAccessible}
  * @implements {IRegistrable}
  * @alias Blockly.Field
+ * @type {Field}
  */
 const Field = function(value, opt_validator, opt_config) {
   /**

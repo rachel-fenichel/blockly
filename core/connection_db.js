@@ -39,6 +39,7 @@ goog.require('Blockly.constants');
  *     drag.
  * @constructor
  * @alias Blockly.ConnectionDB
+ * @type {ConnectionDB}
  */
 const ConnectionDB = function(checker) {
   /**

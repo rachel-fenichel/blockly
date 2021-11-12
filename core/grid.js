@@ -31,6 +31,7 @@ const {Svg} = goog.require('Blockly.utils.Svg');
  *     https://developers.google.com/blockly/guides/configure/web/grid
  * @constructor
  * @alias Blockly.Grid
+ * @type {Grid}
  */
 const Grid = function(pattern, options) {
   /**
