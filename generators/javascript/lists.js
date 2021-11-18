@@ -11,7 +11,7 @@
 
 goog.module('Blockly.JavaScript.lists');
 
-const Blockly = goog.require('Blockly');
+const internalConstants = goog.require('Blockly.internalConstants');
 const JavaScript = goog.require('Blockly.JavaScript');
 
 
@@ -178,7 +178,7 @@ JavaScript['lists_setIndex'] = function(block) {
       return '';
     }
     const listVar = JavaScript.nameDB_.getDistinctName(
-        'tmpList', Blockly.VARIABLE_CATEGORY_NAME);
+        'tmpList', internalConstants.VARIABLE_CATEGORY_NAME);
     const code = 'var ' + listVar + ' = ' + list + ';\n';
     list = listVar;
     return code;
@@ -226,7 +226,7 @@ JavaScript['lists_setIndex'] = function(block) {
     case ('RANDOM'): {
       let code = cacheList();
       const xVar = JavaScript.nameDB_.getDistinctName(
-          'tmpX', Blockly.VARIABLE_CATEGORY_NAME);
+          'tmpX', internalConstants.VARIABLE_CATEGORY_NAME);
       code += 'var ' + xVar + ' = Math.floor(Math.random() * ' + list +
           '.length);\n';
       if (mode === 'SET') {

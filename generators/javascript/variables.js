@@ -11,14 +11,14 @@
 
 goog.module('Blockly.JavaScript.variables');
 
-const Blockly = goog.require('Blockly');
+const internalConstants = goog.require('Blockly.internalConstants');
 const JavaScript = goog.require('Blockly.JavaScript');
 
 
 JavaScript['variables_get'] = function(block) {
   // Variable getter.
   const code = JavaScript.nameDB_.getName(
-      block.getFieldValue('VAR'), Blockly.VARIABLE_CATEGORY_NAME);
+      block.getFieldValue('VAR'), internalConstants.VARIABLE_CATEGORY_NAME);
   return [code, JavaScript.ORDER_ATOMIC];
 };
 
@@ -28,6 +28,6 @@ JavaScript['variables_set'] = function(block) {
       JavaScript.valueToCode(block, 'VALUE', JavaScript.ORDER_ASSIGNMENT) ||
       '0';
   const varName = JavaScript.nameDB_.getName(
-      block.getFieldValue('VAR'), Blockly.VARIABLE_CATEGORY_NAME);
+      block.getFieldValue('VAR'), internalConstants.VARIABLE_CATEGORY_NAME);
   return varName + ' = ' + argument0 + ';\n';
 };

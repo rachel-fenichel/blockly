@@ -11,14 +11,14 @@
 
 goog.module('Blockly.JavaScript.procedures');
 
-const Blockly = goog.require('Blockly');
+const internalConstants = goog.require('Blockly.internalConstants');
 const JavaScript = goog.require('Blockly.JavaScript');
 
 
 JavaScript['procedures_defreturn'] = function(block) {
   // Define a procedure with a return value.
   const funcName = JavaScript.nameDB_.getName(
-      block.getFieldValue('NAME'), Blockly.PROCEDURE_CATEGORY_NAME);
+      block.getFieldValue('NAME'), internalConstants.PROCEDURE_CATEGORY_NAME);
   let xfix1 = '';
   if (JavaScript.STATEMENT_PREFIX) {
     xfix1 += JavaScript.injectId(JavaScript.STATEMENT_PREFIX,
@@ -51,8 +51,8 @@ JavaScript['procedures_defreturn'] = function(block) {
   const args = [];
   const variables = block.getVars();
   for (let i = 0; i < variables.length; i++) {
-    args[i] = JavaScript.nameDB_.getName(variables[i],
-        Blockly.VARIABLE_CATEGORY_NAME);
+    args[i] = JavaScript.nameDB_.getName(
+        variables[i], internalConstants.VARIABLE_CATEGORY_NAME);
   }
   let code = 'function ' + funcName + '(' + args.join(', ') + ') {\n' +
       xfix1 + loopTrap + branch + xfix2 + returnValue + '}';
@@ -70,7 +70,7 @@ JavaScript['procedures_defnoreturn'] =
 JavaScript['procedures_callreturn'] = function(block) {
   // Call a procedure with a return value.
   const funcName = JavaScript.nameDB_.getName(
-      block.getFieldValue('NAME'), Blockly.PROCEDURE_CATEGORY_NAME);
+      block.getFieldValue('NAME'), internalConstants.PROCEDURE_CATEGORY_NAME);
   const args = [];
   const variables = block.getVars();
   for (let i = 0; i < variables.length; i++) {

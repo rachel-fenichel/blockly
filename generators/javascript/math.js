@@ -11,7 +11,7 @@
 
 goog.module('Blockly.JavaScript.math');
 
-const Blockly = goog.require('Blockly');
+const internalConstants = goog.require('Blockly.internalConstants');
 const JavaScript = goog.require('Blockly.JavaScript');
 
 
@@ -209,7 +209,7 @@ JavaScript['math_change'] = function(block) {
   const argument0 = JavaScript.valueToCode(block, 'DELTA',
       JavaScript.ORDER_ADDITION) || '0';
   const varName = JavaScript.nameDB_.getName(
-      block.getFieldValue('VAR'), Blockly.VARIABLE_CATEGORY_NAME);
+      block.getFieldValue('VAR'), internalConstants.VARIABLE_CATEGORY_NAME);
   return varName + ' = (typeof ' + varName + ' === \'number\' ? ' + varName +
       ' : 0) + ' + argument0 + ';\n';
 };

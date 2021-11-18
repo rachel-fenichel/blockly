@@ -11,7 +11,7 @@
 
 goog.module('Blockly.JavaScript.texts');
 
-const Blockly = goog.require('Blockly');
+const internalConstants = goog.require('Blockly.internalConstants');
 const JavaScript = goog.require('Blockly.JavaScript');
 
 
@@ -83,7 +83,7 @@ JavaScript['text_join'] = function(block) {
 JavaScript['text_append'] = function(block) {
   // Append to a variable in place.
   const varName = JavaScript.nameDB_.getName(
-      block.getFieldValue('VAR'), Blockly.VARIABLE_CATEGORY_NAME);
+      block.getFieldValue('VAR'), internalConstants.VARIABLE_CATEGORY_NAME);
   const value = JavaScript.valueToCode(block, 'TEXT',
       JavaScript.ORDER_NONE) || '\'\'';
   const code = varName + ' += ' + forceString(value)[0] + ';\n';

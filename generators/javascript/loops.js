@@ -130,7 +130,7 @@ JavaScript['controls_for'] = function(block) {
 JavaScript['controls_forEach'] = function(block) {
   // For each loop.
   const variable0 = JavaScript.nameDB_.getName(
-      block.getFieldValue('VAR'), Blockly.VARIABLE_CATEGORY_NAME);
+      block.getFieldValue('VAR'), internalConstants.VARIABLE_CATEGORY_NAME);
   const argument0 = JavaScript.valueToCode(block, 'LIST',
       JavaScript.ORDER_ASSIGNMENT) || '[]';
   let branch = JavaScript.statementToCode(block, 'DO');
@@ -140,11 +140,11 @@ JavaScript['controls_forEach'] = function(block) {
   let listVar = argument0;
   if (!argument0.match(/^\w+$/)) {
     listVar = JavaScript.nameDB_.getDistinctName(
-        variable0 + '_list', Blockly.VARIABLE_CATEGORY_NAME);
+        variable0 + '_list', internalConstants.VARIABLE_CATEGORY_NAME);
     code += 'var ' + listVar + ' = ' + argument0 + ';\n';
   }
   const indexVar = JavaScript.nameDB_.getDistinctName(
-      variable0 + '_index', Blockly.VARIABLE_CATEGORY_NAME);
+      variable0 + '_index', internalConstants.VARIABLE_CATEGORY_NAME);
   branch = JavaScript.INDENT + variable0 + ' = ' +
       listVar + '[' + indexVar + '];\n' + branch;
   code += 'for (var ' + indexVar + ' in ' + listVar + ') {\n' + branch + '}\n';

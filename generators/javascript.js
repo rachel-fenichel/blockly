@@ -12,7 +12,7 @@
 goog.module('Blockly.JavaScript');
 goog.module.declareLegacyNamespace();
 
-const Blockly = goog.require('Blockly');
+const internalConstants = goog.require('Blockly.internalConstants');
 const {Generator} = goog.require('Blockly.Generator');
 const {inputTypes} = goog.require('Blockly.inputTypes');
 const {globalThis} = goog.require('Blockly.utils.global');
@@ -156,7 +156,7 @@ JavaScript.init = function(workspace) {
   const variables = Variables.allUsedVarModels(workspace);
   for (let i = 0; i < variables.length; i++) {
     defvars.push(this.nameDB_.getName(variables[i].getId(),
-        Blockly.VARIABLE_CATEGORY_NAME));
+        internalConstants.VARIABLE_CATEGORY_NAME));
   }
 
   // Declare all of the variables.
@@ -294,7 +294,7 @@ JavaScript.getAdjusted = function(block, atId, opt_delta, opt_negate,
 
   let at = this.valueToCode(block, atId, outerOrder) || defaultAtIndex;
 
-  if (Blockly.isNumber(at)) {
+  if (stringUtils.isNumber(at)) {
     // If the index is a naked number, adjust it right now.
     at = Number(at) + delta;
     if (opt_negate) {
