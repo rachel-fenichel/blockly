@@ -89,7 +89,7 @@ const NAMESPACE_OBJECT = '$';
  * The function getChunkOptions will, after running
  * closure-calculate-chunks, update each chunk to add the following
  * properties:
- * 
+ *
  * - .dependencies: a list of the chunks the chunk depends upon.
  * - .wrapper: the chunk wrapper.
  *
@@ -98,7 +98,7 @@ const NAMESPACE_OBJECT = '$';
 const chunks = [
   {
     name: 'blockly',
-    entry: 'core/blockly.js',
+    entry: 'typingstest/core/blockly.js',
     exports: 'Blockly',
     importAs: 'Blockly',
     factoryPreamble: `const ${NAMESPACE_OBJECT}={};`,
@@ -226,7 +226,7 @@ function buildDeps(done) {
 
   const roots = [
     closurePath,
-    'core',
+    'typingstest/core',
     'blocks',
     'generators',
   ];
@@ -432,12 +432,12 @@ function getChunkOptions() {
   return {chunk: chunkList, js: rawOptions.js, chunk_wrapper: chunkWrappers};
 }
 
-/** 
+/**
  * RegExp that globally matches path.sep (i.e., "/" or "\").
  */
 const pathSepRegExp = new RegExp(path.sep.replace(/\\/, '\\\\'), "g");
 
-/** 
+/**
  * Modify the supplied gulp.rename path object to relax @package
  * restrictions in core/.
  *
@@ -503,7 +503,7 @@ function compile(options) {
 }
 
 /**
- * This task compiles the core library, blocks and generators, creating 
+ * This task compiles the core library, blocks and generators, creating
  * blockly_compressed.js, blocks_compressed.js, etc.
  *
  * The deps.js file must be up-to-date.
