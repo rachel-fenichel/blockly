@@ -1,0 +1,12 @@
+on:
+  push:
+    branches:
+      - develop
+name: release-please
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: GoogleCloudPlatform/release-please-action@v2
+        with:
+          command: manifest
