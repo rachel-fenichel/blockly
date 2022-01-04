@@ -194,13 +194,13 @@ const OPACITY_MIN = 0.4;
 /**
  * The maximum (hovered) opacity of the trashcan and lid.
  */
-const OPACITY_MAX = 0.8;
+const OPACITY_MAX = 0.7;
 
 /**
  * The maximum angle the trashcan lid can opens to. At the end of the open
  * animation the lid will be open to this angle.
  */
-const MAX_LID_ANGLE = 45;
+const MAX_LID_ANGLE = 70;
 
 /**
  * Current open/close state of the lid.
