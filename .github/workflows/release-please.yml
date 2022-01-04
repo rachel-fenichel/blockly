@@ -9,4 +9,7 @@ jobs:
     steps:
       - uses: GoogleCloudPlatform/release-please-action@v3.0.0
         with:
-          command: manifest
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+          package-name: blockly
+         # command: manifest
