@@ -12,4 +12,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
           package-name: blockly
-         # command: manifest
+          command: manifest
