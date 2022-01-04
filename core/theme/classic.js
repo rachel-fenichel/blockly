@@ -21,7 +21,7 @@ const {Theme} = goog.require('Blockly.Theme');
 
 
 const defaultBlockStyles = {
-  'colour_blocks': {'colourPrimary': '20'},
+  'colour_blocks': {'colourPrimary': '120'},
   'list_blocks': {'colourPrimary': '260'},
   'logic_blocks': {'colourPrimary': '210'},
   'loop_blocks': {'colourPrimary': '120'},
