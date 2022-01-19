@@ -2,5 +2,6 @@ primaryBranch: develop
 releaseType: node
 packageName: blockly
 manifest: true
-manifestConfig: release-please-config.json
-manifestFile: .release-please-manifest.json
+manifestConfig: .github/release-please/config.json
+manifestFile: .github/release-please/manifest.json
+changelogFile: ./github/CHANGELOG.md
