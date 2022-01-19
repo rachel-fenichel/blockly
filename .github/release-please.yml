@@ -4,4 +4,4 @@ packageName: blockly
 manifest: true
 manifestConfig: .github/release-please/config.json
 manifestFile: .github/release-please/manifest.json
-changelogPath: ./github/CHANGELOG.md
+changelogPath: .github/CHANGELOG.md
