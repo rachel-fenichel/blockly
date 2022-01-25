@@ -2,11 +2,17 @@
   "include": [
     "core/**/*",
     "closure/goog/base_minimal.js",
+    //"core/utils/*.js",
+    //"core/toolbox/*.js",
+    // Basic cursor definitely breaks it.
+    //"core/keyboard_nav/basic_cursor.js"
+    //"core/keyboard_nav/cursor.js"
   ],
   "compilerOptions": {
     // Tells TypeScript to read JS files, as
     // normally they are ignored as source files
     "allowJs": true,
+    //"checkJs": true,
 
     // Enable the next few options for type declarations.
     // Generate d.ts files
@@ -16,8 +22,11 @@
     // next to the .js files
     //"declarationDir": "build/ts/declarations",
 
+    // tsickle requires a rootDir.
+    "rootDir": ".",
+
     "outDir": "build/ts",
-    "module": "ES2015",
+    "module": "commonjs",
     "moduleResolution": "node",
     "target": "ES2015",
     "strict": true,
