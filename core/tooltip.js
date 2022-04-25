@@ -194,7 +194,7 @@ exports.MARGINS = MARGINS;
  * The HTML container.  Set once by createDom.
  * @type {?HTMLDivElement}
  */
-let DIV = null;
+let containerDiv = null;
 
 /**
  * Returns the HTML tooltip container.
@@ -202,7 +202,7 @@ let DIV = null;
  * @alias Blockly.Tooltip.getDiv
  */
 const getDiv = function() {
-  return DIV;
+  return containerDiv;
 };
 exports.getDiv = getDiv;
 
@@ -270,14 +270,14 @@ const getTargetObject = function(obj) {
  * @alias Blockly.Tooltip.createDom
  */
 const createDom = function() {
-  if (DIV) {
+  if (containerDiv) {
     return;  // Already created.
   }
   // Create an HTML container for popup overlays (e.g. editor widgets).
-  DIV = /** @type {!HTMLDivElement} */ (document.createElement('div'));
-  DIV.className = 'blocklyTooltipDiv';
+  containerDiv = /** @type {!HTMLDivElement} */ (document.createElement('div'));
+  containerDiv.className = 'blocklyTooltipDiv';
   const container = common.getParentContainer() || document.body;
-  container.appendChild(DIV);
+  container.appendChild(containerDiv);
 };
 exports.createDom = createDom;
 
@@ -410,8 +410,8 @@ exports.dispose = dispose;
 const hide = function() {
   if (visible) {
     visible = false;
-    if (DIV) {
-      DIV.style.display = 'none';
+    if (containerDiv) {
+      containerDiv.style.display = 'none';
     }
   }
   if (showPid) {
@@ -447,12 +447,12 @@ exports.unblock = unblock;
  * Renders the tooltip content into the tooltip div.
  */
 const renderContent = function() {
-  if (!DIV || !element) {
+  if (!containerDiv || !element) {
     // This shouldn't happen, but if it does, we can't render.
     return;
   }
   if (typeof customTooltip === 'function') {
-    customTooltip(DIV, element);
+    customTooltip(containerDiv, element);
   } else {
     renderDefaultContent();
   }
@@ -469,7 +469,7 @@ const renderDefaultContent = function() {
   for (let i = 0; i < lines.length; i++) {
     const div = /** @type {!HTMLDivElement} */ (document.createElement('div'));
     div.appendChild(document.createTextNode(lines[i]));
-    DIV.appendChild(div);
+    containerDiv.appendChild(div);
   }
 };
 
@@ -487,26 +487,26 @@ const getPosition = function(rtl) {
 
   let anchorX = lastX;
   if (rtl) {
-    anchorX -= OFFSET_X + DIV.offsetWidth;
+    anchorX -= OFFSET_X + containerDiv.offsetWidth;
   } else {
     anchorX += OFFSET_X;
   }
 
   let anchorY = lastY + OFFSET_Y;
-  if (anchorY + DIV.offsetHeight > windowHeight + window.scrollY) {
+  if (anchorY + containerDiv.offsetHeight > windowHeight + window.scrollY) {
     // Falling off the bottom of the screen; shift the tooltip up.
-    anchorY -= DIV.offsetHeight + 2 * OFFSET_Y;
+    anchorY -= containerDiv.offsetHeight + 2 * OFFSET_Y;
   }
 
   if (rtl) {
     // Prevent falling off left edge in RTL mode.
     anchorX = Math.max(MARGINS - window.scrollX, anchorX);
   } else {
-    if (anchorX + DIV.offsetWidth >
+    if (anchorX + containerDiv.offsetWidth >
         windowWidth + window.scrollX - 2 * MARGINS) {
       // Falling off the right edge of the screen;
       // clamp the tooltip on the edge.
-      anchorX = windowWidth - DIV.offsetWidth - 2 * MARGINS;
+      anchorX = windowWidth - containerDiv.offsetWidth - 2 * MARGINS;
     }
   }
 
@@ -522,22 +522,22 @@ const show = function() {
     return;
   }
   poisonedElement = element;
-  if (!DIV) {
+  if (!containerDiv) {
     return;
   }
   // Erase all existing text.
-  DIV.textContent = '';
+  containerDiv.textContent = '';
 
   // Add new content.
   renderContent();
 
   // Display the tooltip.
   const rtl = /** @type {{RTL: boolean}} */ (element).RTL;
-  DIV.style.direction = rtl ? 'rtl' : 'ltr';
-  DIV.style.display = 'block';
+  containerDiv.style.direction = rtl ? 'rtl' : 'ltr';
+  containerDiv.style.display = 'block';
   visible = true;
 
   const {x, y} = getPosition(rtl);
-  DIV.style.left = x + 'px';
-  DIV.style.top = y + 'px';
+  containerDiv.style.left = x + 'px';
+  containerDiv.style.top = y + 'px';
 };
