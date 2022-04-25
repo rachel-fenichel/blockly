@@ -51,9 +51,13 @@ class BlockChange extends BlockBase {
     if (!opt_block) {
       return;  // Blank event to be populated by fromJson.
     }
+    /** @type {string} */
     this.element = typeof opt_element === 'undefined' ? '' : opt_element;
+    /** @type {string} */
     this.name = typeof opt_name === 'undefined' ? '' : opt_name;
+    /** @type {?} */
     this.oldValue = typeof opt_oldValue === 'undefined' ? '' : opt_oldValue;
+    /** @type {?} */
     this.newValue = typeof opt_newValue === 'undefined' ? '' : opt_newValue;
   }
 

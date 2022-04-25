@@ -446,7 +446,7 @@ const Bubble = class {
     const topPosition = {
       x: optimalLeft,
       y: -this.height_ -
-          this.workspace_.getRenderer().getConstants().MIN_BLOCK_HEIGHT,
+          /** @type {number} */(this.workspace_.getRenderer().getConstants().MIN_BLOCK_HEIGHT),
     };
     const startPosition = {x: -this.width_ - 30, y: optimalTop};
     const endPosition = {x: bbox.width, y: optimalTop};

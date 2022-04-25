@@ -221,7 +221,7 @@ const BubbleDragger = class {
     if (this.wouldDeleteBubble_) {
       // Fire a move event, so we know where to go back to for an undo.
       this.fireMoveEvent_();
-      this.draggingBubble_.dispose(false, true);
+      this.draggingBubble_.dispose();
     } else {
       // Put everything back onto the bubble canvas.
       if (this.dragSurface_) {
