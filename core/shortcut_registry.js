@@ -360,6 +360,7 @@ ShortcutRegistry.modifierKeys = {
 ShortcutRegistry.KeyboardShortcut;
 
 // Creates and assigns the singleton instance.
+/** @type {!ShortcutRegistry} */
 const registry = new ShortcutRegistry();
 ShortcutRegistry.registry = registry;
 

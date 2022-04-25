@@ -1276,6 +1276,7 @@ Field.NBSP = '\u00A0';
  * A value used to signal when a field's constructor should *not* set the
  * field's value or run configure_, and should allow a subclass to do that
  * instead.
+ * @type {!Sentinel}
  * @const
  */
 Field.SKIP_SETUP = new Sentinel();

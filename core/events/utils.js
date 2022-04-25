@@ -305,6 +305,7 @@ exports.BumpEvent = BumpEvent;
  *
  * Not to be confused with bumping so that disconnected connections do not
  * appear connected.
+ * @type {!Array<string>}
  * @const
  * @alias Blockly.Events.utils.BUMP_EVENTS
  */

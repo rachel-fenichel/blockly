@@ -38,6 +38,7 @@ exports.DRAG_STACK = DRAG_STACK;
 
 /**
  * Lookup table for determining the opposite type of a connection.
+ * @type {!Array<number>}
  * @const
  * @alias Blockly.internalConstants.OPPOSITE_TYPE
  */
