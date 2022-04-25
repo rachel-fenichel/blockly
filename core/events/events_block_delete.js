@@ -55,6 +55,7 @@ class BlockDelete extends BlockBase {
     }
 
     this.oldXml = Xml.blockToDomWithXY(opt_block);
+    /** @type {!Array<string>} */
     this.ids = eventUtils.getDescendantIds(opt_block);
 
     /**

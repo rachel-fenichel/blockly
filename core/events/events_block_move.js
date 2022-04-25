@@ -60,12 +60,18 @@ class BlockMove extends BlockBase {
     }
 
     const location = this.currentLocation_();
+    /** @type {string} */
     this.oldParentId = location.parentId;
+    /** @type {string} */
     this.oldInputName = location.inputName;
+    /** @type {?Coordinate} */
     this.oldCoordinate = location.coordinate;
 
+    /** @type {?string} */
     this.newParentId = null;
+    /** @type {?string} */
     this.newInputName = null;
+    /** @type {?Coordinate} */
     this.newCoordinate = null;
   }
 

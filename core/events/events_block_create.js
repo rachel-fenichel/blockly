@@ -52,6 +52,7 @@ class BlockCreate extends BlockBase {
     }
 
     this.xml = Xml.blockToDomWithXY(opt_block);
+    /** @type {!Array<string>} */
     this.ids = eventUtils.getDescendantIds(opt_block);
 
     /**

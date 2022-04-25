@@ -47,8 +47,10 @@ class CommentChange extends CommentBase {
       return;  // Blank event to be populated by fromJson.
     }
 
+    /** @type {string} */
     this.oldContents_ =
         typeof opt_oldContents === 'undefined' ? '' : opt_oldContents;
+    /** @type {string} */
     this.newContents_ =
         typeof opt_newContents === 'undefined' ? '' : opt_newContents;
   }

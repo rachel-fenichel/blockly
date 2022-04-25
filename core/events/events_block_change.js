@@ -53,7 +53,7 @@ class BlockChange extends BlockBase {
     }
     /** @type {string} */
     this.element = typeof opt_element === 'undefined' ? '' : opt_element;
-    /** @type {string} */
+    /** @type {?string} */
     this.name = typeof opt_name === 'undefined' ? '' : opt_name;
     /** @type {?} */
     this.oldValue = typeof opt_oldValue === 'undefined' ? '' : opt_oldValue;
@@ -117,6 +117,10 @@ class BlockChange extends BlockBase {
     const value = forward ? this.newValue : this.oldValue;
     switch (this.element) {
       case 'field': {
+        if (!this.name) {
+          console.warn('Can\'t set non-existent field');
+          break;
+        }
         const field = block.getField(this.name);
         if (field) {
           field.setValue(value);
