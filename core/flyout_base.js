@@ -209,7 +209,7 @@ class Flyout extends DeleteArea {
      * A map from blocks to the rects which are beneath them to act as input
      * targets.
      * @type {!WeakMap<!BlockSvg, !SVGElement>}
-     * @private
+     * @protected
      */
     this.rectMap_ = new WeakMap();
 
@@ -748,7 +748,7 @@ class Flyout extends DeleteArea {
               blockInfo['disabled'] !== true;
         }
         block = blocks.append(
-            /** @type {blocks.State} */ (blockInfo), this.workspace_);
+            /** @type {!blocks.State} */ (blockInfo), this.workspace_);
       }
     }
 

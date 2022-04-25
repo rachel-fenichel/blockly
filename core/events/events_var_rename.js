@@ -46,7 +46,9 @@ class VarRename extends VarBase {
       return;  // Blank event to be populated by fromJson.
     }
 
+    /** @type {string} */
     this.oldName = opt_variable.name;
+    /** @type {string} */
     this.newName = typeof newName === 'undefined' ? '' : newName;
   }
 

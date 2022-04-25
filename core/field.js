@@ -895,7 +895,6 @@ class Field {
    * Override getText_ to provide a different behavior than simply casting the
    * value to a string.
    * @return {string} Current text.
-   * @final
    */
   getText() {
     // this.getText_ was intended so that devs don't have to remember to call

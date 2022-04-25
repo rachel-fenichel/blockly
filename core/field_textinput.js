@@ -79,7 +79,7 @@ class FieldTextInput extends Field {
     /**
      * True if the field's value is currently being edited via the UI.
      * @type {boolean}
-     * @private
+     * @protected
      */
     this.isBeingEdited_ = false;
 

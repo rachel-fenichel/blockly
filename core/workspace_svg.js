@@ -731,9 +731,10 @@ class WorkspaceSvg extends Workspace {
     for (let i = 0, block; (block = blocks[i]); i++) {
       const blockStyleName = block.getStyleName();
       if (blockStyleName) {
-        block.setStyle(blockStyleName);
-        if (block.mutator) {
-          block.mutator.updateBlockStyle();
+        const blockSvg = /** @type {!BlockSvg} */(block);
+        blockSvg.setStyle(blockStyleName);
+        if (blockSvg.mutator) {
+          blockSvg.mutator.updateBlockStyle();
         }
       }
     }
