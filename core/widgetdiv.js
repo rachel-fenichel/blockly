@@ -58,7 +58,7 @@ let themeClassName = '';
  * The HTML container for popup overlays (e.g. editor widgets).
  * @type {?HTMLDivElement}
  */
-let DIV;
+let containerDiv;
 
 /**
  * Returns the HTML container for editor widgets.
@@ -66,7 +66,7 @@ let DIV;
  * @alias Blockly.WidgetDiv.getDiv
  */
 const getDiv = function() {
-  return DIV;
+  return containerDiv;
 };
 exports.getDiv = getDiv;
 
@@ -77,7 +77,7 @@ exports.getDiv = getDiv;
  * @ignore
  */
 const testOnly_setDiv = function(newDiv) {
-  DIV = newDiv;
+  containerDiv = newDiv;
 };
 exports.testOnly_setDiv = testOnly_setDiv;
 
@@ -105,14 +105,14 @@ Object.defineProperties(exports, {
  * @alias Blockly.WidgetDiv.createDom
  */
 const createDom = function() {
-  if (DIV) {
+  if (containerDiv) {
     return;  // Already created.
   }
 
-  DIV = /** @type {!HTMLDivElement} */ (document.createElement('div'));
-  DIV.className = 'blocklyWidgetDiv';
+  containerDiv = /** @type {!HTMLDivElement} */ (document.createElement('div'));
+  containerDiv.className = 'blocklyWidgetDiv';
   const container = common.getParentContainer() || document.body;
-  container.appendChild(DIV);
+  container.appendChild(containerDiv);
 };
 exports.createDom = createDom;
 
@@ -128,7 +128,7 @@ const show = function(newOwner, rtl, newDispose) {
   hide();
   owner = newOwner;
   dispose = newDispose;
-  const div = DIV;
+  const div = containerDiv;
   div.style.direction = rtl ? 'rtl' : 'ltr';
   div.style.display = 'block';
   const mainWorkspace =
@@ -150,7 +150,7 @@ const hide = function() {
   }
   owner = null;
 
-  const div = DIV;
+  const div = containerDiv;
   div.style.display = 'none';
   div.style.left = '';
   div.style.top = '';
@@ -201,9 +201,9 @@ exports.hideIfOwner = hideIfOwner;
  * @param {number} height The height of the widget div (pixels).
  */
 const positionInternal = function(x, y, height) {
-  DIV.style.left = x + 'px';
-  DIV.style.top = y + 'px';
-  DIV.style.height = height + 'px';
+  containerDiv.style.left = x + 'px';
+  containerDiv.style.top = y + 'px';
+  containerDiv.style.height = height + 'px';
 };
 
 /**
