@@ -40,6 +40,7 @@ class BubbleOpen extends UiBase {
   constructor(opt_block, opt_isOpen, opt_bubbleType) {
     const workspaceId = opt_block ? opt_block.workspace.id : undefined;
     super(workspaceId);
+    /** @type {?string} */
     this.blockId = opt_block ? opt_block.id : null;
 
     /**

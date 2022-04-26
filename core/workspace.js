@@ -71,7 +71,7 @@ class Workspace {
     this.RTL = !!this.options.RTL;
     /** @type {boolean} */
     this.horizontalLayout = !!this.options.horizontalLayout;
-    /** @type {toolbox.Position} */
+    /** @type {!toolbox.Position} */
     this.toolboxPosition = this.options.toolboxPosition;
 
     /**

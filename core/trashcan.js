@@ -346,7 +346,9 @@ class Trashcan extends DeleteArea {
     if (!this.contentsIsOpen()) {
       return;
     }
-    this.flyout.hide();
+    if (this.flyout) {
+      this.flyout.hide();
+    }
     this.fireUiEvent_(false);
     this.workspace_.recordDragTargets();
   }

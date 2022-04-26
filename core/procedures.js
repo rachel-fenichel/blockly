@@ -335,7 +335,8 @@ const mutatorOpenListener = function(e) {
     return;
   }
   const bubbleEvent = /** @type {!BubbleOpen} */ (e);
-  if (!(bubbleEvent.bubbleType === 'mutator' && bubbleEvent.isOpen)) {
+  if (!(bubbleEvent.bubbleType === 'mutator' && bubbleEvent.isOpen) ||
+      !bubbleEvent.blockId) {
     return;
   }
   const workspaceId = /** @type {string} */ (bubbleEvent.workspaceId);

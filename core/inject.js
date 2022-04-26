@@ -313,7 +313,7 @@ const bindDocumentEvents = function() {
     browserEvents.conditionalBind(document, 'scroll', null, function() {
       const workspaces = Workspace.getAll();
       for (let i = 0, workspace; (workspace = workspaces[i]); i++) {
-        if (workspace.updateInverseScreenCTM) {
+        if (workspace instanceof WorkspaceSvg) {
           workspace.updateInverseScreenCTM();
         }
       }

@@ -86,7 +86,7 @@ class FieldTextInput extends Field {
     /**
      * True if the value currently displayed in the field's editory UI is valid.
      * @type {boolean}
-     * @private
+     * @protected
      */
     this.isTextValid_ = false;
 

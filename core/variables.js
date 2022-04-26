@@ -93,9 +93,10 @@ const allDeveloperVariables = function(workspace) {
   const variableHash = Object.create(null);
   for (let i = 0, block; (block = blocks[i]); i++) {
     let getDeveloperVariables = block.getDeveloperVariables;
-    if (!getDeveloperVariables && block.getDeveloperVars) {
+    if (!getDeveloperVariables && (/** @type {?} */(block)).getDeveloperVars) {
       // August 2018: getDeveloperVars() was deprecated and renamed
       // getDeveloperVariables().
+      /** @suppress {checkTypes} */
       getDeveloperVariables = block.getDeveloperVars;
       if (!ALL_DEVELOPER_VARS_WARNINGS_BY_BLOCK_TYPE[block.type]) {
         console.warn(
