@@ -45,7 +45,9 @@ class VarDelete extends VarBase {
       return;  // Blank event to be populated by fromJson.
     }
 
+    /** @type {string} */
     this.varType = opt_variable.type;
+    /** @type {string} */
     this.varName = opt_variable.name;
   }
 

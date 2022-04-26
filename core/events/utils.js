@@ -393,8 +393,9 @@ const filter = function(queueIn, forward) {
         lastEvent.newCoordinate = moveEvent.newCoordinate;
         lastEntry.index = i;
       } else if (
-          event.type === CHANGE && event.element === lastEvent.element &&
-          event.name === lastEvent.name) {
+          event.type === CHANGE &&
+          (/** @type {!BlockChange} */(event)).element === lastEvent.element &&
+          (/** @type {!BlockChange} */(event)).name === lastEvent.name) {
         const changeEvent = /** @type {!BlockChange} */ (event);
         // Merge change events.
         lastEvent.newValue = changeEvent.newValue;
