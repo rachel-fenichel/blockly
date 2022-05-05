@@ -101,36 +101,36 @@ const chunks = [
     entry: 'core/blockly.js',
     reexport: 'Blockly',
   },
-  {
-    name: 'blocks',
-    entry: 'blocks/blocks.js',
-    reexport: 'Blockly.libraryBlocks',
-  },
-  {
-    name: 'javascript',
-    entry: 'generators/javascript/all.js',
-    reexport: 'Blockly.JavaScript',
-  },
-  {
-    name: 'python',
-    entry: 'generators/python/all.js',
-    reexport: 'Blockly.Python',
-  },
-  {
-    name: 'php',
-    entry: 'generators/php/all.js',
-    reexport: 'Blockly.PHP',
-  },
-  {
-    name: 'lua',
-    entry: 'generators/lua/all.js',
-    reexport: 'Blockly.Lua',
-  },
-  {
-    name: 'dart',
-    entry: 'generators/dart/all.js',
-    reexport: 'Blockly.Dart',
-  }
+  // {
+  //   name: 'blocks',
+  //   entry: 'blocks/blocks.js',
+  //   reexport: 'Blockly.libraryBlocks',
+  // },
+  // {
+  //   name: 'javascript',
+  //   entry: 'generators/javascript/all.js',
+  //   reexport: 'Blockly.JavaScript',
+  // },
+  // {
+  //   name: 'python',
+  //   entry: 'generators/python/all.js',
+  //   reexport: 'Blockly.Python',
+  // },
+  // {
+  //   name: 'php',
+  //   entry: 'generators/php/all.js',
+  //   reexport: 'Blockly.PHP',
+  // },
+  // {
+  //   name: 'lua',
+  //   entry: 'generators/lua/all.js',
+  //   reexport: 'Blockly.Lua',
+  // },
+  // {
+  //   name: 'dart',
+  //   entry: 'generators/dart/all.js',
+  //   reexport: 'Blockly.Dart',
+  // }
 ];
 
 const licenseRegex = `\\/\\*\\*
@@ -196,9 +196,9 @@ var JSCOMP_ERROR = [
   'nonStandardJsDocs',
   // 'partialAlias',  // Don't want this to be an error yet; only warning.
   // 'polymer',  // Not applicable.
-  // 'reportUnknownTypes',  // VERY verbose.
-  // 'strictCheckTypes',  // Use --strict to enable.
-  // 'strictMissingProperties',  // Part of strictCheckTypes.
+  //'reportUnknownTypes',  // VERY verbose.
+  //'strictCheckTypes',  // Use --strict to enable.
+  //'strictMissingProperties',  // Part of strictCheckTypes.
   'strictModuleChecks',  // Undocumented but valid.
   'strictModuleDepCheck',
   // 'strictPrimitiveOperators',  // Part of strictCheckTypes.
@@ -260,8 +260,8 @@ function buildDeps(done) {
   const roots = [
     closurePath,
     coreDir,
-    'blocks',
-    'generators',
+ //   'blocks',
+  //  'generators',
   ];
 
   const testRoots = [
@@ -273,9 +273,9 @@ function buildDeps(done) {
   execSync(`closure-make-deps ${args} > tests/deps.js`, {stdio: 'inherit'});
 
   // Use grep to filter out the entries that are already in deps.js.
-  const testArgs = testRoots.map(root => `--root '${root}' `).join('');
-  execSync(`closure-make-deps ${testArgs} | grep 'tests/mocha'` +
-      ' > tests/deps.mocha.js', {stdio: 'inherit'});
+  // const testArgs = testRoots.map(root => `--root '${root}' `).join('');
+  // execSync(`closure-make-deps ${testArgs} | grep 'tests/mocha'` +
+  //     ' > tests/deps.mocha.js', {stdio: 'inherit'});
   done();
 };
 

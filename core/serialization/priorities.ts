@@ -27,7 +27,8 @@
  * @const
  * @alias Blockly.serialization.priorities.VARIABLES
  */
-export { 100 as VARIABLES };
+const VARIABLES = 100;
+export { VARIABLES };
 
 /**
  * The priority for deserializing blocks.
@@ -35,4 +36,5 @@ export { 100 as VARIABLES };
  * @const
  * @alias Blockly.serialization.priorities.BLOCKS
  */
-export { 50 as BLOCKS };
+const BLOCKS = 50;
+export { BLOCKS };

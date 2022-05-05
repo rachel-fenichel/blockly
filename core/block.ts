@@ -59,6 +59,7 @@ import './events/events_block_create';
 import './events/events_block_delete';
 /** @suppress {extraRequire} */
 import './events/events_block_move';
+import {Generator} from './generator';
 
 
 /**
@@ -70,6 +71,56 @@ import './events/events_block_move';
  * @alias Blockly.Block
  */
 class Block {
+  data: null;
+  disposed: boolean;
+  hue_: null;
+  colour_: string;
+  styleName_: string;
+  init: undefined;
+  mutationToDom: undefined;
+  domToMutation: undefined;
+  saveExtraState: undefined;
+  loadExtraState: undefined;
+  suppressPrefixSuffix: boolean;
+  getDeveloperVariables: undefined;
+  compose: undefined;
+  decompose: undefined;
+  id: any;
+  outputConnection: null;
+  nextConnection: null;
+  previousConnection: null;
+  inputList: never[];
+  inputsInline: undefined;
+  disabled: boolean;
+  tooltip: string;
+  contextMenu: boolean;
+  parentBlock_: null;
+  childBlocks_: never[];
+  deletable_: boolean;
+  movable_: boolean;
+  editable_: boolean;
+  isShadow_: boolean;
+  collapsed_: boolean;
+  outputShape_: null;
+  comment: null;
+  commentModel: { text: null; pinned: boolean; size: typeof Size; };
+  xy_: typeof Coordinate;
+  workspace: any;
+  isInFlyout: any;
+  isInMutator: any;
+  RTL: any;
+  isInsertionMarker_: boolean;
+  hat: undefined;
+  rendered: null;
+  helpUrl: null;
+  onchangeWrapper_: null;
+  statementInputCount: number;
+  type: any;
+  inputsInlineDefault: any;
+  onchange: any;
+  static CommentModel: any;
+  static COLLAPSED_INPUT_NAME: string;
+  static COLLAPSED_FIELD_NAME: string;
   /**
    * @param {!Workspace} workspace The block's workspace.
    * @param {!string} prototypeName Name of the language object containing
@@ -79,7 +130,8 @@ class Block {
    * @throws When the prototypeName is not valid or not allowed.
    */
   constructor(workspace, prototypeName, opt_id) {
-    const {Generator} = goog.module.get('Blockly.Generator');
+    // TODO(tsConversion): Delete or reenable.
+    //const {Generator} = goog.module.get('Blockly.Generator');
     if (Generator &&
         typeof Generator.prototype[prototypeName] !== 'undefined') {
       // Occluding Generator class members is not allowed.

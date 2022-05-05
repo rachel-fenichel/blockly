@@ -22,7 +22,7 @@
  * @alias Blockly.constants.COLLAPSED_INPUT_NAME
  */
 const COLLAPSED_INPUT_NAME = '_TEMP_COLLAPSED_INPUT';
-exports.COLLAPSED_INPUT_NAME = COLLAPSED_INPUT_NAME;
+export { COLLAPSED_INPUT_NAME };
 
 /**
  * The language-neutral ID given to the collapsed field.
@@ -30,4 +30,4 @@ exports.COLLAPSED_INPUT_NAME = COLLAPSED_INPUT_NAME;
  * @alias Blockly.constants.COLLAPSED_FIELD_NAME
  */
 const COLLAPSED_FIELD_NAME = '_TEMP_COLLAPSED_FIELD';
-exports.COLLAPSED_FIELD_NAME = COLLAPSED_FIELD_NAME;
+export { COLLAPSED_FIELD_NAME };

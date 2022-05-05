@@ -1,7 +1,7 @@
 {
   "include": [
     "core/**/*.ts",
-    //"closure/goog/base_minimal.js",
+    "closure/goog/base_minimal.js",
   ],
   "compilerOptions": {
     // Tells TypeScript to read JS files, as
@@ -18,9 +18,19 @@
 
     "outDir": "build/ts",
     "module": "ES2015",
-    "moduleResolution": "node",
+    //"moduleResolution": "node",
     "target": "ES2020",
     "strict": true,
-    "noImplicitAny": false
+    
+
+    // Flags to try to get compilation--any compilation, even unsafe--to run
+    "noImplicitAny": false,
+    "noImplicitOverride": false,
+    "noImplicitThis": false,
+    "strictNullChecks": false,
+    "strictPropertyInitialization":false,
+    "strictBindCallApply": false,
+    "strictFunctionTypes": false,
+    "importsNotUsedAsValues": "preserve"
   }
 }

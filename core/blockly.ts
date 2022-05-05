@@ -14,7 +14,8 @@
  * @namespace Blockly
  */
 
-goog.module.declareLegacyNamespace();
+// TODO(tsConversion): Delete or reenable.
+//goog.module.declareLegacyNamespace();
 
 import * as ContextMenu from './contextmenu';
 import * as ContextMenuItems from './contextmenu_items';
@@ -190,7 +191,8 @@ import './events/events_var_create';
  * @define {string}
  * @alias Blockly.VERSION
  */
-export { 'uncompiled' as VERSION };
+const VERSION = 'uncompiled';
+export { VERSION };
 
 /*
  * Top-level functions and properties on the Blockly namespace.
@@ -208,19 +210,22 @@ export { 'uncompiled' as VERSION };
  * @see Blockly.Input.Align.LEFT
  * @alias Blockly.ALIGN_LEFT
  */
-exports.ALIGN_LEFT = Align.LEFT;
+const ALIGN_LEFT = Align.LEFT;
+export {ALIGN_LEFT};
 
 /**
  * @see Blockly.Input.Align.CENTRE
  * @alias Blockly.ALIGN_CENTRE
  */
-exports.ALIGN_CENTRE = Align.CENTRE;
+const ALIGN_CENTRE = Align.CENTRE;
+export {ALIGN_CENTRE};
 
 /**
  * @see Blockly.Input.Align.RIGHT
  * @alias Blockly.ALIGN_RIGHT
  */
-exports.ALIGN_RIGHT = Align.RIGHT;
+const ALIGN_RIGHT = Align.RIGHT;
+export {ALIGN_RIGHT};
 
 /*
  * Aliases for constants used for connection and input types.
@@ -298,8 +303,7 @@ exports.TOOLBOX_AT_RIGHT = toolbox.Position.RIGHT;
  * @see Blockly.common.svgResize
  * @alias Blockly.svgResize
  */
-const svgResize = common.svgResize;
-export { svgResize as svgResize };
+// export { svgResize } from './common.js';
 
 /**
  * Close tooltips, context menus, dropdown selections, etc.
@@ -313,35 +317,37 @@ const hideChaff = function(opt_onlyClosePopups) {
 };
 export {hideChaff};
 
-/**
- * Returns the main workspace.  Returns the last used main workspace (based on
- * focus).  Try not to use this function, particularly if there are multiple
- * Blockly instances on a page.
- * @return {!Workspace} The main workspace.
- * @see Blockly.common.getMainWorkspace
- * @alias Blockly.getMainWorkspace
- */
-export { common.getMainWorkspace as getMainWorkspace };
+export {svgResize, getMainWorkspace, defineBlocksWithJsonArray, setParentContainer} from './common';
 
-/**
- * Define blocks from an array of JSON block definitions, as might be generated
- * by the Blockly Developer Tools.
- * @param {!Array<!Object>} jsonArray An array of JSON block definitions.
- * @see Blockly.common.defineBlocksWithJsonArray
- * @alias Blockly.defineBlocksWithJsonArray
- */
-export { common.defineBlocksWithJsonArray as defineBlocksWithJsonArray };
+// /**
+//  * Returns the main workspace.  Returns the last used main workspace (based on
+//  * focus).  Try not to use this function, particularly if there are multiple
+//  * Blockly instances on a page.
+//  * @return {!Workspace} The main workspace.
+//  * @see Blockly.common.getMainWorkspace
+//  * @alias Blockly.getMainWorkspace
+//  */
+// export { common.getMainWorkspace as getMainWorkspace };
 
-/**
- * Set the parent container.  This is the container element that the WidgetDiv,
- * dropDownDiv, and Tooltip are rendered into the first time `Blockly.inject`
- * is called.
- * This method is a NOP if called after the first ``Blockly.inject``.
- * @param {!Element} container The container element.
- * @see Blockly.common.setParentContainer
- * @alias Blockly.setParentContainer
- */
-export { common.setParentContainer as setParentContainer };
+// /**
+//  * Define blocks from an array of JSON block definitions, as might be generated
+//  * by the Blockly Developer Tools.
+//  * @param {!Array<!Object>} jsonArray An array of JSON block definitions.
+//  * @see Blockly.common.defineBlocksWithJsonArray
+//  * @alias Blockly.defineBlocksWithJsonArray
+//  */
+// export { common.defineBlocksWithJsonArray as defineBlocksWithJsonArray };
+
+// /**
+//  * Set the parent container.  This is the container element that the WidgetDiv,
+//  * dropDownDiv, and Tooltip are rendered into the first time `Blockly.inject`
+//  * is called.
+//  * This method is a NOP if called after the first ``Blockly.inject``.
+//  * @param {!Element} container The container element.
+//  * @see Blockly.common.setParentContainer
+//  * @alias Blockly.setParentContainer
+//  */
+// export { common.setParentContainer as setParentContainer };
 
 /*
  * Aliased functions and properties that used to be on the Blockly namespace.
@@ -487,7 +493,7 @@ Object.defineProperties(exports, {
  * @see Blockly.WorkspaceSvg.setCachedParentSvgSize
  * @alias Blockly.svgSize
  */
-export { svgMath.svgSize as svgSize };
+export { svgSize } from './utils/svg_math';
 
 /**
  * Size the workspace when the contents change.  This also updates

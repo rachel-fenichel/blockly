@@ -82,44 +82,46 @@ exports.BLOCK_DELETE = eventUtils.BLOCK_DELETE;
 exports.BLOCK_DRAG = eventUtils.BLOCK_DRAG;
 exports.BLOCK_MOVE = eventUtils.BLOCK_MOVE;
 exports.BUBBLE_OPEN = eventUtils.BUBBLE_OPEN;
-export { eventUtils.BumpEvent as BumpEvent };
+export { BumpEvent, CHANGE, CLICK, CREATE, DELETE, MOVE, SELECTED, UI,
+    clearPendingUndo, disable, enable, filter, fire, fromJson, getDescendantIds, get, getGroup,
+    getRecordUndo, isEnabled, setGroup, setRecordUndo, disableOrphans} from './utils';
 exports.BUMP_EVENTS = eventUtils.BUMP_EVENTS;
-export { eventUtils.CHANGE as CHANGE };
-export { eventUtils.CLICK as CLICK };
+//export { eventUtils.CHANGE as CHANGE };
+//export { eventUtils.CLICK as CLICK };
 exports.COMMENT_CHANGE = eventUtils.COMMENT_CHANGE;
 exports.COMMENT_CREATE = eventUtils.COMMENT_CREATE;
 exports.COMMENT_DELETE = eventUtils.COMMENT_DELETE;
 exports.COMMENT_MOVE = eventUtils.COMMENT_MOVE;
-export { eventUtils.CREATE as CREATE };
-export { eventUtils.DELETE as DELETE };
+//export { eventUtils.CREATE as CREATE };
+//export { eventUtils.DELETE as DELETE };
 exports.FINISHED_LOADING = eventUtils.FINISHED_LOADING;
 exports.MARKER_MOVE = eventUtils.MARKER_MOVE;
-export { eventUtils.MOVE as MOVE };
-export { eventUtils.SELECTED as SELECTED };
+//export { eventUtils.MOVE as MOVE };
+//export { eventUtils.SELECTED as SELECTED };
 exports.THEME_CHANGE = eventUtils.THEME_CHANGE;
 exports.TOOLBOX_ITEM_SELECT = eventUtils.TOOLBOX_ITEM_SELECT;
 exports.TRASHCAN_OPEN = eventUtils.TRASHCAN_OPEN;
-export { eventUtils.UI as UI };
+//export { eventUtils.UI as UI };
 exports.VAR_CREATE = eventUtils.VAR_CREATE;
 exports.VAR_DELETE = eventUtils.VAR_DELETE;
 exports.VAR_RENAME = eventUtils.VAR_RENAME;
 exports.VIEWPORT_CHANGE = eventUtils.VIEWPORT_CHANGE;
 
 // Event utils.
-export { eventUtils.clearPendingUndo as clearPendingUndo };
-export { eventUtils.disable as disable };
-export { eventUtils.enable as enable };
-export { eventUtils.filter as filter };
-export { eventUtils.fire as fire };
-export { eventUtils.fromJson as fromJson };
-export { eventUtils.getDescendantIds as getDescendantIds };
-export { eventUtils.get as get };
-export { eventUtils.getGroup as getGroup };
-export { eventUtils.getRecordUndo as getRecordUndo };
-export { eventUtils.isEnabled as isEnabled };
-export { eventUtils.setGroup as setGroup };
-export { eventUtils.setRecordUndo as setRecordUndo };
-export { eventUtils.disableOrphans as disableOrphans };
+// export { eventUtils.clearPendingUndo as clearPendingUndo };
+// export { eventUtils.disable as disable };
+// export { eventUtils.enable as enable };
+// export { eventUtils.filter as filter };
+// export { eventUtils.fire as fire };
+// export { eventUtils.fromJson as fromJson };
+// export { eventUtils.getDescendantIds as getDescendantIds };
+// export { eventUtils.get as get };
+// export { eventUtils.getGroup as getGroup };
+// export { eventUtils.getRecordUndo as getRecordUndo };
+// export { eventUtils.isEnabled as isEnabled };
+// export { eventUtils.setGroup as setGroup };
+// export { eventUtils.setRecordUndo as setRecordUndo };
+// export { eventUtils.disableOrphans as disableOrphans };
 
 Object.defineProperties(exports, {
   /**

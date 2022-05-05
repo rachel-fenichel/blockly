@@ -93,7 +93,7 @@ export {CREATE};
  * @alias Blockly.Events.utils.BLOCK_CREATE
  */
 const BLOCK_CREATE = CREATE;
-exports.BLOCK_CREATE = BLOCK_CREATE;
+export {BLOCK_CREATE };
 
 /**
  * Name of event that deletes a block. Will be deprecated for BLOCK_DELETE.
@@ -109,7 +109,7 @@ export {DELETE};
  * @alias Blockly.Events.utils.BLOCK_DELETE
  */
 const BLOCK_DELETE = DELETE;
-exports.BLOCK_DELETE = BLOCK_DELETE;
+export {BLOCK_DELETE};
 
 /**
  * Name of event that changes a block. Will be deprecated for BLOCK_CHANGE.
@@ -125,7 +125,7 @@ export {CHANGE};
  * @alias Blockly.Events.utils.BLOCK_CHANGE
  */
 const BLOCK_CHANGE = CHANGE;
-exports.BLOCK_CHANGE = BLOCK_CHANGE;
+export {BLOCK_CHANGE};
 
 /**
  * Name of event that moves a block. Will be deprecated for BLOCK_MOVE.
@@ -141,7 +141,7 @@ export {MOVE};
  * @alias Blockly.Events.utils.BLOCK_MOVE
  */
 const BLOCK_MOVE = MOVE;
-exports.BLOCK_MOVE = BLOCK_MOVE;
+export {BLOCK_MOVE};
 
 /**
  * Name of event that creates a variable.
@@ -149,7 +149,7 @@ exports.BLOCK_MOVE = BLOCK_MOVE;
  * @alias Blockly.Events.utils.VAR_CREATE
  */
 const VAR_CREATE = 'var_create';
-exports.VAR_CREATE = VAR_CREATE;
+export { VAR_CREATE};
 
 /**
  * Name of event that deletes a variable.
@@ -157,7 +157,7 @@ exports.VAR_CREATE = VAR_CREATE;
  * @alias Blockly.Events.utils.VAR_DELETE
  */
 const VAR_DELETE = 'var_delete';
-exports.VAR_DELETE = VAR_DELETE;
+export {VAR_DELETE};
 
 /**
  * Name of event that renames a variable.
@@ -165,7 +165,7 @@ exports.VAR_DELETE = VAR_DELETE;
  * @alias Blockly.Events.utils.VAR_RENAME
  */
 const VAR_RENAME = 'var_rename';
-exports.VAR_RENAME = VAR_RENAME;
+export {VAR_RENAME};
 
 /**
  * Name of generic event that records a UI change.
@@ -181,7 +181,7 @@ export {UI};
  * @alias Blockly.Events.utils.BLOCK_DRAG
  */
 const BLOCK_DRAG = 'drag';
-exports.BLOCK_DRAG = BLOCK_DRAG;
+export {BLOCK_DRAG};
 
 /**
  * Name of event that records a change in selected element.
@@ -205,7 +205,7 @@ export {CLICK};
  * @alias Blockly.Events.utils.MARKER_MOVE
  */
 const MARKER_MOVE = 'marker_move';
-exports.MARKER_MOVE = MARKER_MOVE;
+export {MARKER_MOVE};
 
 /**
  * Name of event that records a bubble open.
@@ -213,7 +213,7 @@ exports.MARKER_MOVE = MARKER_MOVE;
  * @alias Blockly.Events.utils.BUBBLE_OPEN
  */
 const BUBBLE_OPEN = 'bubble_open';
-exports.BUBBLE_OPEN = BUBBLE_OPEN;
+export {BUBBLE_OPEN};
 
 /**
  * Name of event that records a trashcan open.
@@ -221,7 +221,7 @@ exports.BUBBLE_OPEN = BUBBLE_OPEN;
  * @alias Blockly.Events.utils.TRASHCAN_OPEN
  */
 const TRASHCAN_OPEN = 'trashcan_open';
-exports.TRASHCAN_OPEN = TRASHCAN_OPEN;
+export {TRASHCAN_OPEN};
 
 /**
  * Name of event that records a toolbox item select.
@@ -229,7 +229,7 @@ exports.TRASHCAN_OPEN = TRASHCAN_OPEN;
  * @alias Blockly.Events.utils.TOOLBOX_ITEM_SELECT
  */
 const TOOLBOX_ITEM_SELECT = 'toolbox_item_select';
-exports.TOOLBOX_ITEM_SELECT = TOOLBOX_ITEM_SELECT;
+export {TOOLBOX_ITEM_SELECT};
 
 /**
  * Name of event that records a theme change.
@@ -237,7 +237,7 @@ exports.TOOLBOX_ITEM_SELECT = TOOLBOX_ITEM_SELECT;
  * @alias Blockly.Events.utils.THEME_CHANGE
  */
 const THEME_CHANGE = 'theme_change';
-exports.THEME_CHANGE = THEME_CHANGE;
+export {THEME_CHANGE};
 
 /**
  * Name of event that records a viewport change.
@@ -245,7 +245,7 @@ exports.THEME_CHANGE = THEME_CHANGE;
  * @alias Blockly.Events.utils.VIEWPORT_CHANGE
  */
 const VIEWPORT_CHANGE = 'viewport_change';
-exports.VIEWPORT_CHANGE = VIEWPORT_CHANGE;
+export {VIEWPORT_CHANGE };
 
 /**
  * Name of event that creates a comment.
@@ -253,7 +253,7 @@ exports.VIEWPORT_CHANGE = VIEWPORT_CHANGE;
  * @alias Blockly.Events.utils.COMMENT_CREATE
  */
 const COMMENT_CREATE = 'comment_create';
-exports.COMMENT_CREATE = COMMENT_CREATE;
+export {COMMENT_CREATE};
 
 /**
  * Name of event that deletes a comment.
@@ -261,7 +261,7 @@ exports.COMMENT_CREATE = COMMENT_CREATE;
  * @alias Blockly.Events.utils.COMMENT_DELETE
  */
 const COMMENT_DELETE = 'comment_delete';
-exports.COMMENT_DELETE = COMMENT_DELETE;
+export {COMMENT_DELETE};
 
 /**
  * Name of event that changes a comment.
@@ -269,7 +269,7 @@ exports.COMMENT_DELETE = COMMENT_DELETE;
  * @alias Blockly.Events.utils.COMMENT_CHANGE
  */
 const COMMENT_CHANGE = 'comment_change';
-exports.COMMENT_CHANGE = COMMENT_CHANGE;
+export {COMMENT_CHANGE};
 
 /**
  * Name of event that moves a comment.
@@ -277,14 +277,14 @@ exports.COMMENT_CHANGE = COMMENT_CHANGE;
  * @alias Blockly.Events.utils.COMMENT_MOVE
  */
 const COMMENT_MOVE = 'comment_move';
-exports.COMMENT_MOVE = COMMENT_MOVE;
+export {COMMENT_MOVE};
 
 /**
  * Name of event that records a workspace load.
  * @alias Blockly.Events.utils.FINISHED_LOADING
  */
 const FINISHED_LOADING = 'finished_loading';
-exports.FINISHED_LOADING = FINISHED_LOADING;
+export {FINISHED_LOADING};
 
 /**
  * Type of events that cause objects to be bumped back into the visible

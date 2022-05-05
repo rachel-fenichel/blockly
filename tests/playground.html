@@ -6,13 +6,13 @@
 
   <!-- This script loads uncompressed when on localhost and loads compressed when it is being hosted.
        Please add any other dependencies to playgrounds/prepare.js.-->
-<script src="playgrounds/prepare.js"></script>
+<!-- <script src="playgrounds/prepare.js"></script> -->
 <script src="playgrounds/screenshot.js"></script>
 <script src="../node_modules/@blockly/dev-tools/dist/index.js"></script>
 <script type=module>
-import Blockly from './playgrounds/blockly.mjs';
-
-const IS_UNCOMPRESSED = Boolean(window.BlocklyLoader);  // See prepare.js
+//import Blockly from './playgrounds/blockly.mjs';
+import Blockly from '../build/ts/core/blockly.js';
+const IS_UNCOMPRESSED = true;// Boolean(window.BlocklyLoader);  // See prepare.js
 var workspace = null;
 
 function start() {

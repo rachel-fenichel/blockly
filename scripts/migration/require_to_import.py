@@ -29,6 +29,7 @@ require_type_matcher = re.compile(r"const ([A-Za-z]+) = goog\.requireType\('(.+)
 destructured_require_type_matcher = re.compile(
     r"const \{(.+)\} = goog\.requireType\('(.+)'\);")
 
+# TODO: Make this work for names with underscores
 exports_matcher = re.compile(r"exports.([A-Za-z]+) = (.+);")
 
 def get_relative_path(namespace, path):
