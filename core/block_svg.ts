@@ -260,21 +260,23 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
    * if the block is not already selected.
    */
   select() {
-    if (this.isShadow() && this.getParent()) {
+    const parent = this.getParent();
+    if (this.isShadow() && parent) {
       // Shadow blocks should not be selected.
-      this.getParent()!.select();
+      parent.select();
       return;
     }
-    if (common.getSelected() === this) {
-      return;
-    }
+    const selected = common.getSelected();
     let oldId = null;
-    if (common.getSelected()) {
-      oldId = common.getSelected()!.id;
+    if (selected) {
+      if (selected === this) {
+        return;
+      }
+      oldId = selected.id;
       // Unselect any previously selected block.
       eventUtils.disable();
       try {
-        common.getSelected()!.unselect();
+        selected.unselect();
       } finally {
         eventUtils.enable();
       }
@@ -334,9 +336,7 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
     }
 
     dom.startTextWidthCache();
-    // AnyDuringMigration because:  Argument of type 'Block | null' is not
-    // assignable to parameter of type 'Block'.
-    super.setParent(newParent as AnyDuringMigration);
+    super.setParent(newParent);
     dom.stopTextWidthCache();
 
     const svgRoot = this.getSvgRoot();
@@ -349,7 +349,7 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
 
     const oldXY = this.getRelativeToSurfaceXY();
     if (newParent) {
-      (newParent as BlockSvg).getSvgRoot().appendChild(svgRoot);
+      newParent.getSvgRoot().appendChild(svgRoot);
       const newXY = this.getRelativeToSurfaceXY();
       // Move the connections to match the child's new position.
       this.moveConnections(newXY.x - oldXY.x, newXY.y - oldXY.y);
@@ -376,9 +376,9 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
     let x = 0;
     let y = 0;
 
-    const dragSurfaceGroup = this.useDragSurface_ ?
-        this.workspace.getBlockDragSurface()!.getGroup() :
-        null;
+    const dragSurface = this.workspace.getBlockDragSurface();
+    const dragSurfaceGroup = dragSurface ?
+        dragSurface.getGroup() : null;
 
     let element: SVGElement = this.getSvgRoot();
     if (element) {
@@ -389,11 +389,9 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
         y += xy.y;
         // If this element is the current element on the drag surface, include
         // the translation of the drag surface itself.
-        if (this.useDragSurface_ &&
-            this.workspace.getBlockDragSurface()!.getCurrentBlock() ===
-                element) {
-          const surfaceTranslation =
-              this.workspace.getBlockDragSurface()!.getSurfaceTranslation();
+        if (dragSurface &&
+          dragSurface.getCurrentBlock() === element) {
+          const surfaceTranslation = dragSurface.getSurfaceTranslation();
           x += surfaceTranslation.x;
           y += surfaceTranslation.y;
         }
@@ -423,7 +421,7 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
     this.translate(xy.x + dx, xy.y + dy);
     this.moveConnections(dx, dy);
     if (eventsEnabled && event) {
-      event!.recordNew();
+      event.recordNew();
       eventUtils.fire(event);
     }
     this.workspace.resizeContents();

@@ -113,7 +113,7 @@ export class BlockDragSurfaceSvg {
     const roundY = Math.round(y);
     this.childSurfaceXY_.x = roundX;
     this.childSurfaceXY_.y = roundY;
-    this.dragGroup_!.setAttribute(
+    this.dragGroup_.setAttribute(
         'transform',
         'translate(' + roundX + ',' + roundY + ') scale(' + scale + ')');
   }
@@ -124,8 +124,8 @@ export class BlockDragSurfaceSvg {
    * @private
    */
   translateSurfaceInternal_() {
-    let x = this.surfaceXY_!.x;
-    let y = this.surfaceXY_!.y;
+    let x = this.surfaceXY_.x;
+    let y = this.surfaceXY_.y;
     // Make sure the svg exists on a pixel boundary so that it is not fuzzy.
     x = Math.round(x);
     y = Math.round(y);
