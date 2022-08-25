@@ -133,8 +133,8 @@ export function createDom() {
 
   div.style.opacity = '0';
   // Transition animation for transform: translate() and opacity.
-  div.style.transition = 'transform ' + ANIMATION_TIME + 's, ' +
-      'opacity ' + ANIMATION_TIME + 's';
+  div.style.transition = `transform ${ANIMATION_TIME}s, ` +
+      `opacity ${ANIMATION_TIME}s`;
 
   // Handle focusin/out events to add a visual indicator when
   // a child is focused or blurred.
@@ -620,8 +620,8 @@ function positionInternal(
   // Update arrow CSS.
   if (metrics.arrowVisible) {
     arrow.style.display = '';
-    arrow.style.transform = 'translate(' + metrics.arrowX + 'px,' +
-        metrics.arrowY + 'px) rotate(45deg)';
+    arrow.style.transform = `translate(${metrics.arrowX}px,` +
+        `${metrics.arrowY}px) rotate(45deg)`;
     arrow.setAttribute(
         'class',
         metrics.arrowAtTop ? 'blocklyDropDownArrow blocklyArrowTop' :
@@ -647,7 +647,7 @@ function positionInternal(
   // where the drop-down is absolutely positioned.
   const dx = finalX - initialX;
   const dy = finalY - initialY;
-  div.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+  div.style.transform = `translate(${dx}px, ${dy}px)`;
 
   return !!metrics.arrowAtTop;
 }
