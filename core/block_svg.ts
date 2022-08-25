@@ -1025,8 +1025,6 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
    * @param text The text, or null to delete.
    */
   override setCommentText(text: string|null) {
-    // AnyDuringMigration because:  Property 'get' does not exist on type
-    // '(name: string) => void'.
     if (this.commentModel.text === text) {
       return;
     }
@@ -1110,7 +1108,7 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
         this.warning = new Warning(this);
         changedState = true;
       }
-      this.warning!.setText((text), id);
+      this.warning.setText((text), id);
     } else {
       // Dispose all warnings if no ID is given.
       if (this.warning && !id) {
@@ -1423,12 +1421,8 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
    * @internal
    */
   setConnectionTracking(track: boolean) {
-    if (this.previousConnection) {
-      (this.previousConnection).setTracking(track);
-    }
-    if (this.outputConnection) {
-      (this.outputConnection).setTracking(track);
-    }
+    this.previousConnection?.setTracking(track);
+    this.outputConnection?.setTracking(track);
     if (this.nextConnection) {
       (this.nextConnection).setTracking(track);
       const child = (this.nextConnection).targetBlock();
@@ -1567,10 +1561,9 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
     // Loop through every connection on this block.
     const myConnections = this.getConnections_(false);
     for (let i = 0, connection; connection = myConnections[i]; i++) {
-      const renderedConn = (connection);
       // Spider down from this block bumping all sub-blocks.
-      if (renderedConn.isConnected() && renderedConn.isSuperior()) {
-        renderedConn.targetBlock()!.bumpNeighbours();
+      if (connection.isConnected() && connection.isSuperior()) {
+        connection.targetBlock()!.bumpNeighbours();
       }
 
       const neighbours = connection.neighbours(config.snapRadius);
@@ -1578,14 +1571,14 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
         const renderedOther = otherConnection as RenderedConnection;
         // If both connections are connected, that's probably fine.  But if
         // either one of them is unconnected, then there could be confusion.
-        if (!renderedConn.isConnected() || !renderedOther.isConnected()) {
+        if (!connection.isConnected() || !renderedOther.isConnected()) {
           // Only bump blocks if they are from different tree structures.
           if (renderedOther.getSourceBlock().getRootBlock() !== rootBlock) {
             // Always bump the inferior block.
-            if (renderedConn.isSuperior()) {
-              renderedOther.bumpAwayFrom(renderedConn);
+            if (connection.isSuperior()) {
+              renderedOther.bumpAwayFrom(connection);
             } else {
-              renderedConn.bumpAwayFrom(renderedOther);
+              connection.bumpAwayFrom(renderedOther);
             }
           }
         }
@@ -1719,12 +1712,8 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
     const blockTL = this.getRelativeToSurfaceXY();
     // Don't tighten previous or output connections because they are inferior
     // connections.
-    if (this.previousConnection) {
-      this.previousConnection.moveToOffset(blockTL);
-    }
-    if (this.outputConnection) {
-      this.outputConnection.moveToOffset(blockTL);
-    }
+    this.previousConnection?.moveToOffset(blockTL);
+    this.outputConnection?.moveToOffset(blockTL);
 
     for (let i = 0; i < this.inputList.length; i++) {
       const conn = this.inputList[i].connection as RenderedConnection;

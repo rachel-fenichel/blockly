@@ -59,9 +59,7 @@ export class InsertionMarkerManager {
    * first block.
    * Set in initAvailableConnections, if at all.
    */
-  // AnyDuringMigration because:  Type 'null' is not assignable to type
-  // 'RenderedConnection'.
-  private lastOnStack_: RenderedConnection = null as AnyDuringMigration;
+  private lastOnStack_: RenderedConnection|null = null;
 
   /**
    * The insertion marker corresponding to the last block in the stack, if
@@ -158,12 +156,8 @@ export class InsertionMarkerManager {
 
     eventUtils.disable();
     try {
-      if (this.firstMarker_) {
-        this.firstMarker_.dispose();
-      }
-      if (this.lastMarker_) {
-        this.lastMarker_.dispose();
-      }
+      this.firstMarker_?.dispose();
+      this.lastMarker_?.dispose();
     } finally {
       eventUtils.enable();
     }

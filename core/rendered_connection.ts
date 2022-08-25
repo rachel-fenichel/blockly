@@ -390,36 +390,34 @@ export class RenderedConnection extends Connection {
    */
   startTrackingAll(): Block[] {
     this.setTracking(true);
+    const block = this.targetBlock();
+    if (!block || (this.type !== ConnectionType.INPUT_VALUE &&
+        this.type !== ConnectionType.NEXT_STATEMENT)) {
+      // No downstream connections.
+      return [];
+    }
     // All blocks that are not tracked must start tracking before any
     // rendering takes place, since rendering requires knowing the dimensions
     // of lower blocks. Also, since rendering a block renders all its parents,
     // we only need to render the leaf nodes.
-    let renderList: AnyDuringMigration[] = [];
-    if (this.type !== ConnectionType.INPUT_VALUE &&
-        this.type !== ConnectionType.NEXT_STATEMENT) {
-      // Only spider down.
-      return renderList;
+    let renderList = [];
+    let connections;
+    if (block.isCollapsed()) {
+      // This block should only be partially revealed since it is collapsed.
+      connections = [];
+      block.outputConnection && connections.push(block.outputConnection);
+      block.nextConnection && connections.push(block.nextConnection);
+      block.previousConnection && connections.push(block.previousConnection);
+    } else {
+      // Show all connections of this block.
+      connections = block.getConnections_(true);
     }
-    const block = this.targetBlock();
-    if (block) {
-      let connections;
-      if (block.isCollapsed()) {
-        // This block should only be partially revealed since it is collapsed.
-        connections = [];
-        block.outputConnection && connections.push(block.outputConnection);
-        block.nextConnection && connections.push(block.nextConnection);
-        block.previousConnection && connections.push(block.previousConnection);
-      } else {
-        // Show all connections of this block.
-        connections = block.getConnections_(true);
-      }
-      for (let i = 0; i < connections.length; i++) {
-        renderList.push(...connections[i].startTrackingAll());
-      }
-      if (!renderList.length) {
-        // Leaf block.
-        renderList = [block];
-      }
+    for (let i = 0; i < connections.length; i++) {
+      renderList.push(...connections[i].startTrackingAll());
+    }
+    if (!renderList.length) {
+      // Leaf block.
+      renderList = [block];
     }
     return renderList;
   }
