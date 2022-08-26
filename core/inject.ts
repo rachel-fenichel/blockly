@@ -45,28 +45,24 @@ import {WorkspaceSvg} from './workspace_svg.js';
  */
 export function inject(
     container: Element|string, opt_options?: BlocklyOptions): WorkspaceSvg {
+  let containerElem;
   if (typeof container === 'string') {
-    // AnyDuringMigration because:  Type 'Element | null' is not assignable to
-    // type 'string | Element'.
-    container = (document.getElementById(container) ||
-                 document.querySelector(container)) as AnyDuringMigration;
+    containerElem = document.getElementById(container) ||
+                 document.querySelector(container);
+  } else {
+    containerElem = container;
   }
   // Verify that the container is in document.
-  // AnyDuringMigration because:  Argument of type 'string | Element' is not
-  // assignable to parameter of type 'Node'.
-  if (!container ||
-      !dom.containsNode(document, container as AnyDuringMigration)) {
+  if (!containerElem || !dom.containsNode(document, containerElem)) {
     throw Error('Error: container is not in current document.');
   }
   const options = new Options(opt_options || {} as BlocklyOptions);
-  const subContainer = (document.createElement('div'));
+  const subContainer = document.createElement('div');
   subContainer.className = 'injectionDiv';
   subContainer.tabIndex = 0;
   aria.setState(subContainer, aria.State.LABEL, Msg['WORKSPACE_ARIA_LABEL']);
 
-  // AnyDuringMigration because:  Property 'appendChild' does not exist on type
-  // 'string | Element'.
-  (container as AnyDuringMigration).appendChild(subContainer);
+  containerElem.appendChild(subContainer);
   const svg = createDom(subContainer, options);
 
   // Create surfaces for dragging things. These are optimizations

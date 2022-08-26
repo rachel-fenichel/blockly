@@ -289,9 +289,7 @@ export class ConstantProvider {
   embossFilterId = '';
 
   /** The <filter> element to use for highlighting, or null if not set. */
-  // AnyDuringMigration because:  Type 'null' is not assignable to type
-  // 'SVGElement'.
-  private embossFilter_: SVGElement = null as AnyDuringMigration;
+  private embossFilter_: SVGFilterElement|null = null;
 
   /**
    * The ID of the disabled pattern, or the empty string if no pattern is set.
@@ -303,9 +301,7 @@ export class ConstantProvider {
   /**
    * The <pattern> element to use for disabled blocks, or null if not set.
    */
-  // AnyDuringMigration because:  Type 'null' is not assignable to type
-  // 'SVGElement'.
-  private disabledPattern_: SVGElement = null as AnyDuringMigration;
+  private disabledPattern_: SVGPatternElement|null = null;
 
   /**
    * The ID of the debug filter, or the empty string if no pattern is set.
