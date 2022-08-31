@@ -93,7 +93,6 @@ export class WorkspaceCommentSvg extends WorkspaceComment implements
 
   /** Whether the comment is rendered onscreen and is a part of the DOM. */
   private rendered_ = false;
-  private readonly useDragSurface_: boolean;
 
   /**
    * @param workspace The block's workspace.
@@ -119,12 +118,6 @@ export class WorkspaceCommentSvg extends WorkspaceComment implements
       'ry': BORDER_RADIUS,
     });
     this.svgGroup_.appendChild(this.svgRect_);
-
-    /**
-     * Whether to move the comment to the drag surface when it is dragged.
-     * True if it should move, false if it should be translated directly.
-     */
-    this.useDragSurface_ = !!workspace.getBlockDragSurface();
 
     this.render();
   }
@@ -309,10 +302,6 @@ export class WorkspaceCommentSvg extends WorkspaceComment implements
     let x = 0;
     let y = 0;
 
-    const dragSurfaceGroup = this.useDragSurface_ ?
-        this.workspace.getBlockDragSurface()!.getGroup() :
-        null;
-
     let element = this.getSvgRoot();
     if (element) {
       do {
@@ -320,21 +309,10 @@ export class WorkspaceCommentSvg extends WorkspaceComment implements
         const xy = svgMath.getRelativeXY(element as Element);
         x += xy.x;
         y += xy.y;
-        // If this element is the current element on the drag surface, include
-        // the translation of the drag surface itself.
-        if (this.useDragSurface_ &&
-            this.workspace.getBlockDragSurface()!.getCurrentBlock() ===
-                element) {
-          const surfaceTranslation =
-              this.workspace.getBlockDragSurface()!.getSurfaceTranslation();
-          x += surfaceTranslation.x;
-          y += surfaceTranslation.y;
-        }
         // AnyDuringMigration because:  Type 'ParentNode | null' is not
         // assignable to type 'SVGElement'.
         element = element.parentNode as AnyDuringMigration;
-      } while (element && element !== this.workspace.getBubbleCanvas() &&
-               element !== dragSurfaceGroup);
+      } while (element && element !== this.workspace.getBubbleCanvas());
     }
     this.xy_ = new Coordinate(x, y);
     return this.xy_;
@@ -381,18 +359,7 @@ export class WorkspaceCommentSvg extends WorkspaceComment implements
    * @internal
    */
   moveToDragSurface() {
-    if (!this.useDragSurface_) {
       return;
-    }
-    // The translation for drag surface blocks,
-    // is equal to the current relative-to-surface position,
-    // to keep the position in sync as it move on/off the surface.
-    // This is in workspace coordinates.
-    const xy = this.getRelativeToSurfaceXY();
-    this.clearTransformAttributes_();
-    this.workspace.getBlockDragSurface()!.translateSurface(xy.x, xy.y);
-    // Execute the move on the top-level SVG component
-    this.workspace.getBlockDragSurface()!.setBlocksAndShow(this.getSvgRoot());
   }
 
   /**
@@ -405,17 +372,13 @@ export class WorkspaceCommentSvg extends WorkspaceComment implements
    * @internal
    */
   moveDuringDrag(dragSurface: BlockDragSurfaceSvg, newLoc: Coordinate) {
-    if (dragSurface) {
-      dragSurface.translateSurface(newLoc.x, newLoc.y);
-    } else {
-      (this.svgGroup_ as AnyDuringMigration).translate_ =
-          'translate(' + newLoc.x + ',' + newLoc.y + ')';
-      (this.svgGroup_ as AnyDuringMigration)
-          .setAttribute(
-              'transform',
-              (this.svgGroup_ as AnyDuringMigration).translate_ +
-                  (this.svgGroup_ as AnyDuringMigration).skew_);
-    }
+    (this.svgGroup_ as AnyDuringMigration).translate_ =
+        'translate(' + newLoc.x + ',' + newLoc.y + ')';
+    (this.svgGroup_ as AnyDuringMigration)
+        .setAttribute(
+            'transform',
+            (this.svgGroup_ as AnyDuringMigration).translate_ +
+                (this.svgGroup_ as AnyDuringMigration).skew_);
   }
 
   /**
