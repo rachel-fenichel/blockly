@@ -794,11 +794,7 @@ export class Bubble implements IBubble {
    * @internal
    */
   moveDuringDrag(dragSurface: BlockDragSurfaceSvg, newLoc: Coordinate) {
-    if (dragSurface) {
-      dragSurface.translateSurface(newLoc.x, newLoc.y);
-    } else {
-      this.moveTo(newLoc.x, newLoc.y);
-    }
+    this.moveTo(newLoc.x, newLoc.y);
     if (this.workspace_.RTL) {
       this.relativeLeft_ = this.anchorXY_.x - newLoc.x - this.width_;
     } else {

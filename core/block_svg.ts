@@ -142,7 +142,6 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
   override nextConnection!: RenderedConnection;
   // TODO(b/109816955): remove '!', see go/strict-prop-init-fix.
   override previousConnection!: RenderedConnection;
-  private readonly useDragSurface_: boolean;
 
   /**
    * @param workspace The block's workspace.
@@ -191,12 +190,6 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
     /** The renderer's path object. */
     this.pathObject =
         workspace.getRenderer().makePathObject(this.svgGroup_, this.style);
-
-    /**
-     * Whether to move the block to the drag surface when it is dragged.
-     * True if it should move, false if it should be translated directly.
-     */
-    this.useDragSurface_ = !!workspace.getBlockDragSurface();
 
     const svgPath = this.pathObject.svgPath;
     (svgPath as AnyDuringMigration).tooltip = this;
@@ -375,10 +368,6 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
     let x = 0;
     let y = 0;
 
-    const dragSurfaceGroup = this.useDragSurface_ ?
-        this.workspace.getBlockDragSurface()!.getGroup() :
-        null;
-
     let element: SVGElement = this.getSvgRoot();
     if (element) {
       do {
@@ -386,19 +375,8 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
         const xy = svgMath.getRelativeXY(element);
         x += xy.x;
         y += xy.y;
-        // If this element is the current element on the drag surface, include
-        // the translation of the drag surface itself.
-        if (this.useDragSurface_ &&
-            this.workspace.getBlockDragSurface()!.getCurrentBlock() ===
-                element) {
-          const surfaceTranslation =
-              this.workspace.getBlockDragSurface()!.getSurfaceTranslation();
-          x += surfaceTranslation.x;
-          y += surfaceTranslation.y;
-        }
         element = element.parentNode as SVGElement;
-      } while (element && element !== this.workspace.getCanvas() &&
-               element !== dragSurfaceGroup);
+      } while (element && element !== this.workspace.getCanvas());
     }
     return new Coordinate(x, y);
   }
@@ -448,21 +426,7 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
    * @internal
    */
   moveToDragSurface() {
-    if (!this.useDragSurface_) {
       return;
-    }
-    // The translation for drag surface blocks,
-    // is equal to the current relative-to-surface position,
-    // to keep the position in sync as it move on/off the surface.
-    // This is in workspace coordinates.
-    const xy = this.getRelativeToSurfaceXY();
-    this.clearTransformAttributes_();
-    this.workspace.getBlockDragSurface()!.translateSurface(xy.x, xy.y);
-    // Execute the move on the top-level SVG component
-    const svg = this.getSvgRoot();
-    if (svg) {
-      this.workspace.getBlockDragSurface()!.setBlocksAndShow(svg);
-    }
   }
 
   /**
@@ -485,13 +449,7 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
    * @internal
    */
   moveOffDragSurface(newXY: Coordinate) {
-    if (!this.useDragSurface_) {
-      return;
-    }
-    // Translate to current position, turning off 3d.
-    this.translate(newXY.x, newXY.y);
-    this.workspace.getBlockDragSurface()!.clearAndHide(
-        this.workspace.getCanvas());
+    return;
   }
 
   /**
@@ -503,18 +461,13 @@ export class BlockSvg extends Block implements IASTNodeLocationSvg,
    * @internal
    */
   moveDuringDrag(newLoc: Coordinate) {
-    if (this.useDragSurface_) {
-      this.workspace.getBlockDragSurface()!.translateSurface(
-          newLoc.x, newLoc.y);
-    } else {
-      (this.svgGroup_ as AnyDuringMigration).translate_ =
-          'translate(' + newLoc.x + ',' + newLoc.y + ')';
-      (this.svgGroup_ as AnyDuringMigration)
-          .setAttribute(
-              'transform',
-              (this.svgGroup_ as AnyDuringMigration).translate_ +
-                  (this.svgGroup_ as AnyDuringMigration).skew_);
-    }
+    (this.svgGroup_ as AnyDuringMigration).translate_ =
+        'translate(' + newLoc.x + ',' + newLoc.y + ')';
+    (this.svgGroup_ as AnyDuringMigration)
+        .setAttribute(
+            'transform',
+            (this.svgGroup_ as AnyDuringMigration).translate_ +
+                (this.svgGroup_ as AnyDuringMigration).skew_);
   }
 
   /**
