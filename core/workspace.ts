@@ -31,7 +31,7 @@ import * as math from './utils/math.js';
 import type * as toolbox from './utils/toolbox.js';
 import {VariableMap} from './variable_map.js';
 import type {VariableModel} from './variable_model.js';
-import type {WorkspaceComment} from './workspace_comment.js';
+import {WorkspaceComment} from './workspace_comment.js';
 
 
 /**
@@ -169,22 +169,13 @@ export class Workspace implements IASTNodeLocation {
    */
   private sortObjects_(a: Block|WorkspaceComment, b: Block|WorkspaceComment):
       number {
-    // AnyDuringMigration because:  Property 'getRelativeToSurfaceXY' does not
-    // exist on type 'Block | WorkspaceComment'.
-    const aXY = (a as AnyDuringMigration).getRelativeToSurfaceXY();
-    // AnyDuringMigration because:  Property 'getRelativeToSurfaceXY' does not
-    // exist on type 'Block | WorkspaceComment'.
-    const bXY = (b as AnyDuringMigration).getRelativeToSurfaceXY();
-    // AnyDuringMigration because:  Property 'offset' does not exist on type
-    // '(a: Block | WorkspaceComment, b: Block | WorkspaceComment) => number'.
-    // AnyDuringMigration because:  Property 'offset' does not exist on type
-    // '(a: Block | WorkspaceComment, b: Block | WorkspaceComment) => number'.
-    return aXY.y +
-        (Workspace.prototype.sortObjects_ as AnyDuringMigration).offset *
-        aXY.x -
-        (bXY.y +
-         (Workspace.prototype.sortObjects_ as AnyDuringMigration).offset *
-             bXY.x);
+    const aXY = (a instanceof WorkspaceComment) ? a.getXY() :
+                                                  a.getRelativeToSurfaceXY();
+    const bXY = (b instanceof WorkspaceComment) ? b.getXY() :
+                                                  b.getRelativeToSurfaceXY();
+
+    const offset = this.getSortObjectsOffset();
+    return (aXY.y + offset * aXY.x) - (bXY.y + offset * bXY.x);
   }
 
   /**
@@ -218,16 +209,6 @@ export class Workspace implements IASTNodeLocation {
     // Copy the topBlocks_ list.
     const blocks = (new Array<Block>()).concat(this.topBlocks_);
     if (ordered && blocks.length > 1) {
-      // AnyDuringMigration because:  Property 'offset' does not exist on type
-      // '(a: Block | WorkspaceComment, b: Block | WorkspaceComment) => number'.
-      (this.sortObjects_ as AnyDuringMigration).offset =
-          Math.sin(math.toRadians(Workspace.SCAN_ANGLE));
-      if (this.RTL) {
-        // AnyDuringMigration because:  Property 'offset' does not exist on type
-        // '(a: Block | WorkspaceComment, b: Block | WorkspaceComment) =>
-        // number'.
-        (this.sortObjects_ as AnyDuringMigration).offset *= -1;
-      }
       blocks.sort(this.sortObjects_);
     }
     return blocks;
@@ -271,16 +252,6 @@ export class Workspace implements IASTNodeLocation {
     }
     const blocks = this.typedBlocksDB.get(type)!.slice(0);
     if (ordered && blocks && blocks.length > 1) {
-      // AnyDuringMigration because:  Property 'offset' does not exist on type
-      // '(a: Block | WorkspaceComment, b: Block | WorkspaceComment) => number'.
-      (this.sortObjects_ as AnyDuringMigration).offset =
-          Math.sin(math.toRadians(Workspace.SCAN_ANGLE));
-      if (this.RTL) {
-        // AnyDuringMigration because:  Property 'offset' does not exist on type
-        // '(a: Block | WorkspaceComment, b: Block | WorkspaceComment) =>
-        // number'.
-        (this.sortObjects_ as AnyDuringMigration).offset *= -1;
-      }
       blocks.sort(this.sortObjects_);
     }
 
@@ -337,16 +308,6 @@ export class Workspace implements IASTNodeLocation {
     // Copy the topComments_ list.
     const comments = (new Array<WorkspaceComment>()).concat(this.topComments_);
     if (ordered && comments.length > 1) {
-      // AnyDuringMigration because:  Property 'offset' does not exist on type
-      // '(a: Block | WorkspaceComment, b: Block | WorkspaceComment) => number'.
-      (this.sortObjects_ as AnyDuringMigration).offset =
-          Math.sin(math.toRadians(Workspace.SCAN_ANGLE));
-      if (this.RTL) {
-        // AnyDuringMigration because:  Property 'offset' does not exist on type
-        // '(a: Block | WorkspaceComment, b: Block | WorkspaceComment) =>
-        // number'.
-        (this.sortObjects_ as AnyDuringMigration).offset *= -1;
-      }
       comments.sort(this.sortObjects_);
     }
     return comments;
@@ -827,6 +788,21 @@ export class Workspace implements IASTNodeLocation {
    */
   setVariableMap(variableMap: VariableMap) {
     this.variableMap_ = variableMap;
+  }
+
+  /**
+   * Get the offset for sorting top-level objects on the workspace. Order of
+   * execution is generally top to bottom, but a small angle changes the scan to
+   * give a bit of a left to right bias (reversed in RTL).
+   *
+   * @returns The offset used to sort top-level objects on the workspace.
+   */
+  private getSortObjectsOffset(): number {
+    let offset = Math.sin(math.toRadians(Workspace.SCAN_ANGLE));
+    if (this.RTL) {
+      offset *= -1;
+    }
+    return offset;
   }
 
   /**
