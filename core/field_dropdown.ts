@@ -205,7 +205,7 @@ export class FieldDropdown extends Field {
     }
 
     if (this.borderRect_) {
-      this.borderRect_.classList.add('blocklyDropdownRect');
+      dom.addClass(this.borderRect_, 'blocklyDropdownRect');
     }
   }
 
@@ -276,7 +276,7 @@ export class FieldDropdown extends Field {
     dropDownDiv.clearContent();
     // Element gets created in render.
     const menuElement = this.menu_!.render(dropDownDiv.getContentDiv());
-    menuElement.classList.add('blocklyDropdownMenu');
+    dom.addClass(menuElement, 'blocklyDropdownMenu');
 
     if (this.getConstants()!.FIELD_DROPDOWN_COLOURED_DIV) {
       const primaryColour = this.sourceBlock_.isShadow() ?
@@ -285,6 +285,10 @@ export class FieldDropdown extends Field {
       const borderColour = this.sourceBlock_.isShadow() ?
           (this.sourceBlock_.getParent() as BlockSvg).style.colourTertiary :
           (this.sourceBlock_ as BlockSvg).style.colourTertiary;
+      if (!borderColour) {
+        throw new Error(
+            'The renderer did not properly initialize the block style');
+      }
       dropDownDiv.setColour(primaryColour, borderColour);
     }
 
@@ -499,6 +503,14 @@ export class FieldDropdown extends Field {
    */
   override applyColour() {
     const style = (this.sourceBlock_ as BlockSvg).style;
+    if (!style.colourSecondary) {
+      throw new Error(
+          'The renderer did not properly initialize the block style');
+    }
+    if (!style.colourTertiary) {
+      throw new Error(
+          'The renderer did not properly initialize the block style');
+    }
     if (this.borderRect_) {
       this.borderRect_.setAttribute('stroke', style.colourTertiary);
       if (this.menu_) {
@@ -596,7 +608,7 @@ export class FieldDropdown extends Field {
   private renderSelectedText_() {
     // Retrieves the selected option to display through getText_.
     this.textContent_.nodeValue = this.getDisplayText_();
-    this.textElement_.classList.add('blocklyDropdownText');
+    dom.addClass(this.textElement_, 'blocklyDropdownText');
     this.textElement_.setAttribute('text-anchor', 'start');
 
     // Height and width include the border rect.
@@ -741,7 +753,7 @@ const IMAGE_Y_OFFSET = 5;
 const IMAGE_Y_PADDING: number = IMAGE_Y_OFFSET * 2;
 
 /** Android can't (in 2014) display "▾", so use "▼" instead. */
-FieldDropdown.ARROW_CHAR = userAgent.ANDROID ? '\u25BC' : '\u25BE';
+FieldDropdown.ARROW_CHAR = userAgent.ANDROID ? '▼' : '▾';
 
 /**
  * Validates the data structure to be processed as an options list.

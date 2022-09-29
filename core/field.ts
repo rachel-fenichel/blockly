@@ -54,9 +54,6 @@ import * as Xml from './xml.js';
 export abstract class Field implements IASTNodeLocationSvg,
                                        IASTNodeLocationWithBlock,
                                        IKeyboardAccessible, IRegistrable {
-  /** The default value for this field. */
-  protected DEFAULT_VALUE: any = null;
-
   /** Non-breaking space. */
   static readonly NBSP = '\u00A0';
 
@@ -208,7 +205,9 @@ export abstract class Field implements IASTNodeLocationSvg,
      * A generic value possessed by the field.
      * Should generally be non-null, only null when the field is created.
      */
-    this.value_ = (new.target).prototype.DEFAULT_VALUE;
+    this.value_ = ('DEFAULT_VALUE' in (new.target).prototype) ?
+        ((new.target).prototype as AnyDuringMigration).DEFAULT_VALUE :
+        null;
 
     /** The size of the area rendered by the field. */
     this.size_ = new Size(0, 0);
@@ -258,7 +257,8 @@ export abstract class Field implements IASTNodeLocationSvg,
    * @returns The renderer constant provider.
    */
   getConstants(): ConstantProvider|null {
-    if (!this.constants_ && this.sourceBlock_ && !this.sourceBlock_.disposed &&
+    if (!this.constants_ && this.sourceBlock_ &&
+        !this.sourceBlock_.isDeadOrDying() &&
         this.sourceBlock_.workspace.rendered) {
       this.constants_ = (this.sourceBlock_.workspace as WorkspaceSvg)
                             .getRenderer()
@@ -492,12 +492,12 @@ export abstract class Field implements IASTNodeLocationSvg,
       return;
     }
     if (this.enabled_ && this.sourceBlock_.isEditable()) {
-      group.classList.add('blocklyEditableText');
-      group.classList.remove('blocklyNonEditableText');
+      dom.addClass(group, 'blocklyEditableText');
+      dom.removeClass(group, 'blocklyNonEditableText');
       group.style.cursor = this.CURSOR;
     } else {
-      group.classList.add('blocklyNonEditableText');
-      group.classList.remove('blocklyEditableText');
+      dom.addClass(group, 'blocklyNonEditableText');
+      dom.removeClass(group, 'blocklyEditableText');
       group.style.cursor = '';
     }
   }
@@ -845,12 +845,12 @@ export abstract class Field implements IASTNodeLocationSvg,
     }
     if (text.length > this.maxDisplayLength) {
       // Truncate displayed string and add an ellipsis ('...').
-      text = text.substring(0, this.maxDisplayLength - 2) + '\u2026';
+      text = text.substring(0, this.maxDisplayLength - 2) + '…';
     }
     // Replace whitespace with non-breaking spaces so the text doesn't collapse.
     text = text.replace(/\s/g, Field.NBSP);
     if (this.sourceBlock_ && this.sourceBlock_.RTL) {
-      // The SVG is LTR, force text to be RTL.
+      // The SVG is LTR, force text to be RTL by adding an RLM.
       text += '\u200F';
     }
     return text;
@@ -1050,7 +1050,7 @@ export abstract class Field implements IASTNodeLocationSvg,
    * @param e Mouse down event.
    */
   protected onMouseDown_(e: Event) {
-    if (!this.sourceBlock_ || this.sourceBlock_.disposed) {
+    if (!this.sourceBlock_ || this.sourceBlock_.isDeadOrDying()) {
       return;
     }
     const gesture = (this.sourceBlock_.workspace as WorkspaceSvg).getGesture(e);

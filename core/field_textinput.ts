@@ -18,6 +18,7 @@ import './events/events_block_change.js';
 import type {BlockSvg} from './block_svg.js';
 import * as browserEvents from './browser_events.js';
 import * as dialog from './dialog.js';
+import * as dom from './utils/dom.js';
 import * as dropDownDiv from './dropdowndiv.js';
 import * as eventUtils from './events/utils.js';
 import {FieldConfig, Field} from './field.js';
@@ -216,15 +217,19 @@ export class FieldTextInput extends Field {
    * @internal
    */
   override applyColour() {
-    if (this.sourceBlock_ && this.getConstants()!.FULL_BLOCK_FIELDS) {
-      if (this.borderRect_) {
-        this.borderRect_.setAttribute(
-            'stroke', (this.sourceBlock_ as BlockSvg).style.colourTertiary);
-      } else {
-        (this.sourceBlock_ as BlockSvg)
-            .pathObject.svgPath.setAttribute(
-                'fill', this.getConstants()!.FIELD_BORDER_RECT_COLOUR);
+    if (!this.sourceBlock_ || !this.getConstants()!.FULL_BLOCK_FIELDS) return;
+
+    const source = this.sourceBlock_ as BlockSvg;
+
+    if (this.borderRect_) {
+      if (!source.style.colourTertiary) {
+        throw new Error(
+            'The renderer did not properly initialize the block style');
       }
+      this.borderRect_.setAttribute('stroke', source.style.colourTertiary);
+    } else {
+      source.pathObject.svgPath.setAttribute(
+          'fill', this.getConstants()!.FIELD_BORDER_RECT_COLOUR);
     }
   }
 
@@ -240,10 +245,10 @@ export class FieldTextInput extends Field {
       this.resizeEditor_();
       const htmlInput = this.htmlInput_ as HTMLElement;
       if (!this.isTextValid_) {
-        htmlInput.classList.add('blocklyInvalidInput');
+        dom.addClass(htmlInput, 'blocklyInvalidInput');
         aria.setState(htmlInput, aria.State.INVALID, true);
       } else {
-        htmlInput.classList.remove('blocklyInvalidInput');
+        dom.removeClass(htmlInput, 'blocklyInvalidInput');
         aria.setState(htmlInput, aria.State.INVALID, false);
       }
     }
@@ -327,7 +332,7 @@ export class FieldTextInput extends Field {
     eventUtils.setGroup(true);
     const div = WidgetDiv.getDiv();
 
-    this.getClickTarget_().classList.add('editing');
+    dom.addClass(this.getClickTarget_(), 'editing');
 
     const htmlInput = (document.createElement('input'));
     htmlInput.className = 'blocklyHtmlInput';
@@ -396,7 +401,7 @@ export class FieldTextInput extends Field {
     style.boxShadow = '';
     this.htmlInput_ = null;
 
-    this.getClickTarget_().classList.remove('editing');
+    dom.removeClass(this.getClickTarget_(), 'editing');
   }
 
   /**

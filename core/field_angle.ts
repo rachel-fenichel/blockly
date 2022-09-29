@@ -201,7 +201,7 @@ export class FieldAngle extends FieldTextInput {
     // Add the degree symbol to the left of the number, even in RTL (issue
     // #2380)
     this.symbol_ = dom.createSvgElement(Svg.TSPAN, {});
-    this.symbol_.appendChild(document.createTextNode('\u00B0'));
+    this.symbol_.appendChild(document.createTextNode('°'));
     this.textElement_.appendChild(this.symbol_);
   }
 
@@ -228,6 +228,10 @@ export class FieldAngle extends FieldTextInput {
     dropDownDiv.getContentDiv().appendChild(this.editor_ as AnyDuringMigration);
 
     if (this.sourceBlock_ instanceof BlockSvg) {
+      if (!this.sourceBlock_.style.colourTertiary) {
+        throw new Error(
+            'The renderer did not properly initialize the block style');
+      }
       dropDownDiv.setColour(
           this.sourceBlock_.style.colourPrimary,
           this.sourceBlock_.style.colourTertiary);

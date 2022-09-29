@@ -190,7 +190,7 @@ export class FieldMultilineInput extends FieldTextInput {
       }
     }
     if (this.sourceBlock_.RTL) {
-      // The SVG is LTR, force value to be RTL.
+      // The SVG is LTR, force value to be RTL by adding an RLM.
       textLines += '\u200F';
     }
     return textLines;
@@ -239,9 +239,9 @@ export class FieldMultilineInput extends FieldTextInput {
     if (this.isBeingEdited_) {
       const htmlInput = this.htmlInput_ as HTMLElement;
       if (this.isOverflowedY_) {
-        htmlInput.classList.add('blocklyHtmlTextAreaInputOverflowedY');
+        dom.addClass(htmlInput, 'blocklyHtmlTextAreaInputOverflowedY');
       } else {
-        htmlInput.classList.remove('blocklyHtmlTextAreaInputOverflowedY');
+        dom.removeClass(htmlInput, 'blocklyHtmlTextAreaInputOverflowedY');
       }
     }
 
@@ -258,10 +258,10 @@ export class FieldMultilineInput extends FieldTextInput {
       }
       const htmlInput = this.htmlInput_ as HTMLElement;
       if (!this.isTextValid_) {
-        htmlInput.classList.add('blocklyInvalidInput');
+        dom.addClass(htmlInput, 'blocklyInvalidInput');
         aria.setState(htmlInput, aria.State.INVALID, true);
       } else {
-        htmlInput.classList.remove('blocklyInvalidInput');
+        dom.removeClass(htmlInput, 'blocklyInvalidInput');
         aria.setState(htmlInput, aria.State.INVALID, false);
       }
     }

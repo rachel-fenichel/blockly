@@ -1227,10 +1227,8 @@ export class WorkspaceSvg extends Workspace implements IASTNodeLocationSvg {
     // Figure out where we want to put the canvas back.  The order
     // in the is important because things are layered.
     const previousElement = this.svgBlockCanvas_.previousSibling as Element;
-    const width =
-        parseInt(this.getParentSvg().getAttribute('width') ?? '0', 10);
-    const height =
-        parseInt(this.getParentSvg().getAttribute('height') ?? '0', 10);
+    const width = parseInt(this.getParentSvg().getAttribute('width') ?? '0');
+    const height = parseInt(this.getParentSvg().getAttribute('height') ?? '0');
     const coord = svgMath.getRelativeXY(this.getCanvas());
     this.workspaceDragSurface_!.setContentsAndShow(
         this.getCanvas(), this.getBubbleCanvas(), previousElement, width,
@@ -1409,11 +1407,11 @@ export class WorkspaceSvg extends Workspace implements IASTNodeLocationSvg {
       let blockY = 0;
       if (xmlBlock) {
         block = Xml.domToBlock(xmlBlock, this) as BlockSvg;
-        blockX = parseInt(xmlBlock.getAttribute('x') ?? '0', 10);
+        blockX = parseInt(xmlBlock.getAttribute('x') ?? '0');
         if (this.RTL) {
           blockX = -blockX;
         }
-        blockY = parseInt(xmlBlock.getAttribute('y') ?? '0', 10);
+        blockY = parseInt(xmlBlock.getAttribute('y') ?? '0');
       } else if (jsonBlock) {
         block = blocks.append(jsonBlock, this) as BlockSvg;
         blockX = jsonBlock['x'] || 10;
@@ -1488,8 +1486,8 @@ export class WorkspaceSvg extends Workspace implements IASTNodeLocationSvg {
     try {
       comment = WorkspaceCommentSvg.fromXmlRendered(xmlComment, this);
       // Move the duplicate to original position.
-      let commentX = parseInt(xmlComment.getAttribute('x') ?? '0', 10);
-      let commentY = parseInt(xmlComment.getAttribute('y') ?? '0', 10);
+      let commentX = parseInt(xmlComment.getAttribute('x') ?? '0');
+      let commentY = parseInt(xmlComment.getAttribute('y') ?? '0');
       if (!isNaN(commentX) && !isNaN(commentY)) {
         if (this.RTL) {
           commentX = -commentX;
@@ -2082,8 +2080,8 @@ export class WorkspaceSvg extends Workspace implements IASTNodeLocationSvg {
    * @internal
    */
   beginCanvasTransition() {
-    this.svgBlockCanvas_.classList.add('blocklyCanvasTransitioning');
-    this.svgBubbleCanvas_.classList.add('blocklyCanvasTransitioning');
+    dom.addClass(this.svgBlockCanvas_, 'blocklyCanvasTransitioning');
+    dom.addClass(this.svgBubbleCanvas_, 'blocklyCanvasTransitioning');
   }
 
   /**
@@ -2092,8 +2090,8 @@ export class WorkspaceSvg extends Workspace implements IASTNodeLocationSvg {
    * @internal
    */
   endCanvasTransition() {
-    this.svgBlockCanvas_.classList.remove('blocklyCanvasTransitioning');
-    this.svgBubbleCanvas_.classList.remove('blocklyCanvasTransitioning');
+    dom.removeClass(this.svgBlockCanvas_, 'blocklyCanvasTransitioning');
+    dom.removeClass(this.svgBubbleCanvas_, 'blocklyCanvasTransitioning');
   }
 
   /** Center the workspace. */
