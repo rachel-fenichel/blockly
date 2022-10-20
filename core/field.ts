@@ -945,9 +945,7 @@ export abstract class Field implements IASTNodeLocationSvg,
    * @sealed
    */
   setValue(newValue: AnyDuringMigration) {
-    const doLogging = false;
     if (newValue === null) {
-      doLogging && console.log('null, return');
       // Not a valid value to check.
       return;
     }
@@ -956,7 +954,6 @@ export abstract class Field implements IASTNodeLocationSvg,
     // Class validators might accidentally forget to return, we'll ignore that.
     newValue = this.processValidation_(newValue, validatedValue);
     if (newValue instanceof Error) {
-      doLogging && console.log('invalid class validation, return');
       return;
     }
 
@@ -967,18 +964,15 @@ export abstract class Field implements IASTNodeLocationSvg,
       // that.
       newValue = this.processValidation_(newValue, validatedValue);
       if (newValue instanceof Error) {
-        doLogging && console.log('invalid local validation, return');
         return;
       }
     }
     const source = this.sourceBlock_;
     if (source && source.disposed) {
-      doLogging && console.log('source disposed, return');
       return;
     }
     const oldValue = this.getValue();
     if (oldValue === newValue) {
-      doLogging && console.log('same, doValueUpdate_, return');
       this.doValueUpdate_(newValue);
       return;
     }
@@ -991,7 +985,6 @@ export abstract class Field implements IASTNodeLocationSvg,
     if (this.isDirty_) {
       this.forceRerender();
     }
-    doLogging && console.log(this.value_);
   }
 
   /**
