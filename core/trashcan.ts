@@ -76,7 +76,7 @@ export class Trashcan extends DeleteArea implements IAutoHideable,
   private minOpenness = 0;
 
   /** The SVG group containing the trash can. */
-  private svgGroup: SVGElement|null = null;
+  private svgGroup_: SVGElement|null = null;
 
   /** The SVG image element of the trash can lid. */
   private svgLid: SVGElement|null = null;
@@ -158,11 +158,11 @@ export class Trashcan extends DeleteArea implements IAutoHideable,
               clip-path="url(#blocklyTrashLidClipPath837493)"></image>
         </g>
         */
-    this.svgGroup = dom.createSvgElement(Svg.G, {'class': 'blocklyTrash'});
+    this.svgGroup_ = dom.createSvgElement(Svg.G, {'class': 'blocklyTrash'});
     let clip;
     const rnd = String(Math.random()).substring(2);
     clip = dom.createSvgElement(
-        Svg.CLIPPATH, {'id': 'blocklyTrashBodyClipPath' + rnd}, this.svgGroup);
+        Svg.CLIPPATH, {'id': 'blocklyTrashBodyClipPath' + rnd}, this.svgGroup_);
     dom.createSvgElement(
         Svg.RECT, {'width': WIDTH, 'height': BODY_HEIGHT, 'y': LID_HEIGHT},
         clip);
@@ -174,13 +174,13 @@ export class Trashcan extends DeleteArea implements IAutoHideable,
           'y': -SPRITE_TOP,
           'clip-path': 'url(#blocklyTrashBodyClipPath' + rnd + ')',
         },
-        this.svgGroup);
+        this.svgGroup_);
     body.setAttributeNS(
         dom.XLINK_NS, 'xlink:href',
         this.workspace.options.pathToMedia + SPRITE.url);
 
     clip = dom.createSvgElement(
-        Svg.CLIPPATH, {'id': 'blocklyTrashLidClipPath' + rnd}, this.svgGroup);
+        Svg.CLIPPATH, {'id': 'blocklyTrashLidClipPath' + rnd}, this.svgGroup_);
     dom.createSvgElement(
         Svg.RECT, {'width': WIDTH, 'height': LID_HEIGHT}, clip);
     this.svgLid = dom.createSvgElement(
@@ -191,7 +191,7 @@ export class Trashcan extends DeleteArea implements IAutoHideable,
           'y': -SPRITE_TOP,
           'clip-path': 'url(#blocklyTrashLidClipPath' + rnd + ')',
         },
-        this.svgGroup);
+        this.svgGroup_);
     this.svgLid.setAttributeNS(
         dom.XLINK_NS, 'xlink:href',
         this.workspace.options.pathToMedia + SPRITE.url);
@@ -201,13 +201,13 @@ export class Trashcan extends DeleteArea implements IAutoHideable,
     // Using bindEventWithChecks_ for blocking mousedown causes issue in mobile.
     // See #4303
     browserEvents.bind(
-        this.svgGroup, 'mousedown', this, this.blockMouseDownWhenOpenable);
-    browserEvents.bind(this.svgGroup, 'mouseup', this, this.click);
+        this.svgGroup_, 'mousedown', this, this.blockMouseDownWhenOpenable);
+    browserEvents.bind(this.svgGroup_, 'mouseup', this, this.click);
     // Bind to body instead of this.svgGroup_ so that we don't get lid jitters
     browserEvents.bind(body, 'mouseover', this, this.mouseOver);
     browserEvents.bind(body, 'mouseout', this, this.mouseOut);
     this.animateLid();
-    return this.svgGroup;
+    return this.svgGroup_;
   }
 
   /** Initializes the trash can. */
@@ -239,9 +239,9 @@ export class Trashcan extends DeleteArea implements IAutoHideable,
    */
   dispose() {
     this.workspace.getComponentManager().removeComponent('trashcan');
-    if (this.svgGroup) {
-      dom.removeNode(this.svgGroup);
-      this.svgGroup = null;
+    if (this.svgGroup_) {
+      dom.removeNode(this.svgGroup_);
+      this.svgGroup_ = null;
     }
     this.svgLid = null;
     if (this.lidTask) {
@@ -347,7 +347,7 @@ export class Trashcan extends DeleteArea implements IAutoHideable,
 
     this.top = positionRect.top;
     this.left = positionRect.left;
-    this.svgGroup?.setAttribute(
+    this.svgGroup_?.setAttribute(
         'transform', 'translate(' + this.left + ',' + this.top + ')');
   }
 
@@ -372,11 +372,11 @@ export class Trashcan extends DeleteArea implements IAutoHideable,
    *     ignored.
    */
   override getClientRect(): Rect|null {
-    if (!this.svgGroup) {
+    if (!this.svgGroup_) {
       return null;
     }
 
-    const trashRect = this.svgGroup.getBoundingClientRect();
+    const trashRect = this.svgGroup_.getBoundingClientRect();
     const top = trashRect.top + SPRITE_TOP - MARGIN_HOTSPOT;
     const bottom = top + LID_HEIGHT + BODY_HEIGHT + 2 * MARGIN_HOTSPOT;
     const left = trashRect.left + SPRITE_LEFT - MARGIN_HOTSPOT;
@@ -442,8 +442,8 @@ export class Trashcan extends DeleteArea implements IAutoHideable,
 
     // Linear interpolation between min and max.
     const opacity = OPACITY_MIN + this.lidOpen * (OPACITY_MAX - OPACITY_MIN);
-    if (this.svgGroup) {
-      this.svgGroup.style.opacity = opacity.toString();
+    if (this.svgGroup_) {
+      this.svgGroup_.style.opacity = opacity.toString();
     }
 
     if (this.lidOpen > this.minOpenness && this.lidOpen < 1) {
