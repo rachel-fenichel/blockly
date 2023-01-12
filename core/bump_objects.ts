@@ -5,9 +5,7 @@
  */
 
 /**
- * Utilities for bumping objects back into worksapce bounds.
- *
- * @namespace Blockly.bumpObjects
+ * Utilities for bumping objects back into workspace bounds.
  */
 import * as goog from '../closure/goog/goog.js';
 goog.declareModuleId('Blockly.bumpObjects');
